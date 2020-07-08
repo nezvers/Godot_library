@@ -30,9 +30,12 @@ func rigid_physics(delta)->void:
 		linear_velocity += normal * strenght * (1 - bounciness) #dampen velocity in floor direction
 		linear_velocity = linear_velocity.bounce(normal) #bounce off the surface
 		remainder = collision.remainder.bounce(normal) #add in next frame
-		emit_signal("collided", collision, strenght)
+		collision_callback(collision, strenght)
 	else:
 		remainder = Vector2.ZERO #No collision means no remainder
 
 func apply_impulse(value:Vector2)->void:
 	linear_velocity += value
+
+func collision_callback(_collision:KinematicCollision2D, _strength:float)->void:	#use this function to read collision
+	emit_signal("collided", collision, strenght)					#by default it emits collision
