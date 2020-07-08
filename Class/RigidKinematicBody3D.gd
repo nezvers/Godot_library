@@ -6,8 +6,8 @@ class_name RigidKinematicBody3D
 
 signal collided
 
-export(Vector3) var linear_velocity = Vector2.ZERO
-export(Vector3) var gravity = Vector2(0, 20) setget set_gravity
+export(Vector3) var linear_velocity = Vector3.ZERO
+export(Vector3) var gravity = Vector3(0, 20) setget set_gravity
 export(float) var dampening = 0.005 #if too low value it starts gain speed when rolling on the ground
 export(float, 0.0, 1.0) var bounciness = 0.5
 
