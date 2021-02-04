@@ -1,4 +1,4 @@
-class_name ResourceAsyncLoader	#Godot 3.2.2
+class_name ResourceAsyncLoader	#Godot 3.2.3
 
 #USE IT LIKE THIS
 #var loader = ResourceAsyncLoader.new()
@@ -10,7 +10,7 @@ signal done
 var thread: = Thread.new()
 var mutex: = Mutex.new()
 
-var can_async:bool = ["Windows", "OSX", "UWP", "X11"].has(OS.get_name())
+var can_async:bool = OS.can_use_threads()
 
 func load_start(resource_list:Array)->Array:
 	var resources_in = resource_list.duplicate()
