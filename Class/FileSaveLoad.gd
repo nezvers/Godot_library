@@ -12,26 +12,12 @@ static func save_config(path:String, data:Dictionary)->void:
 		print("invalid file name")
 		return
 	
-	#chech if directory exists. If not then create it
-	var directory: = Directory.new()
-	var baseDir: = path.get_base_dir()
-	if !directory.dir_exists(baseDir):
-		print("directory: ", baseDir, " doesn't exist, creating it")
-# warning-ignore:return_value_discarded
-		directory.make_dir_recursive(baseDir)
-	
 	#Save the file
 	var config = ConfigFile.new()
 	config.set_value("save_dictionary", "data_key", data)
 	config.save(path)
 
 static func load_config(path:String)->Dictionary:
-	#check if file exists
-	var directory: = Directory.new()
-	if !directory.file_exists(path):
-		print("File doesn't exist")
-		
-	#Read the config file
 	var config = ConfigFile.new()
 	config.load(path)
 	var data:Dictionary = config.get_value("save_dictionary", "data_key")
@@ -46,14 +32,6 @@ static func save_json(path:String, data:Dictionary)->void:
 		print("invalid file name")
 		return
 	
-	#chech if directory exists. If not then create it
-	var directory: = Directory.new()
-	var baseDir: = path.get_base_dir()
-	if !directory.dir_exists(baseDir):
-# warning-ignore:return_value_discarded
-		print("directory: ", baseDir, " doesn't exist, creating it")
-		directory.make_dir_recursive(baseDir)
-	
 	#Save the file
 	var file: = File.new()
 # warning-ignore:return_value_discarded
@@ -61,12 +39,6 @@ static func save_json(path:String, data:Dictionary)->void:
 	file.store_line(to_json(data))
 
 static func load_json(path:String)->Dictionary:
-	#check if file exists
-	var directory: = Directory.new()
-	if !directory.file_exists(path):
-		print("File doesn't exist")
-		
-	#Read the json file
 	var file = File.new()
 	file.open(path, File.READ)
 	var data:Dictionary = parse_json(file.get_line())
@@ -81,22 +53,9 @@ static func save_resource(path:String, res:Resource)->void:
 		print("invalid file name")
 		return
 	
-	#chech if directory exists. If not then create it
-	var directory: = Directory.new()
-	var baseDir: = path.get_base_dir()
-	if !directory.dir_exists(baseDir):
-# warning-ignore:return_value_discarded
-		directory.make_dir_recursive(baseDir)
-	
 	#Save the file
 # warning-ignore:return_value_discarded
 	ResourceSaver.save(path, res)
 
 static func load_resource(path:String)->Resource:
-	#check if file exists
-	var directory: = Directory.new()
-	if !directory.file_exists(path):
-		print("File doesn't exist")
-		
-	#Read the config file
 	return ResourceLoader.load(path)
