@@ -81,7 +81,7 @@ static func save_resource(path:String, res:Resource)->void:
     #Save the file
     ResourceSaver.save(path, res)
 
-static func load_resource(path:String)->Dictionary:
+static func load_resource(path:String)->Resource:
     #check if file exists
     var directory: = Directory.new()
     if !directory.file_exists(path)
