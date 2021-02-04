@@ -21,7 +21,9 @@ static func save_config(path:String, data:Dictionary)->void:
 	#Save the file
 	var config = ConfigFile.new()
 	config.set_value("save_dictionary", "data_key", data)
-	config.save(path)
+	var err:int = config.save(path)
+	if err:
+		print("couldn't save: ", err)
 
 static func load_config(path:String)->Dictionary:
 	var directory: = Directory.new()
@@ -81,7 +83,9 @@ static func save_resource(path:String, res:Resource)->void:
 	
 	#Save the file
 # warning-ignore:return_value_discarded
-	ResourceSaver.save(path, res)
+	var err: = ResourceSaver.save(path, res)
+	if err:
+		print("couldn't save: ", err)
 
 static func load_resource(path:String)->Resource:
 	return ResourceLoader.load(path)
