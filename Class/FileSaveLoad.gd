@@ -1,7 +1,7 @@
 class_name FileSaveLoad
 #static functions doesn't require to make an instance of the FileSaveLoad class
 
-#    FileSaveLoad.save_json( {volume = 100, resolution = Vector2(320, 180)} )
+#    FileSaveLoad.save_json( "user://project/save.sav",  {volume = 100, resolution = Vector2(320, 180)} )
 #    var saveData:Dictionary = FileSaveLoad.load_json( "user://project/save.sav" )
 
 
