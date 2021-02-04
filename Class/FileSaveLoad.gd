@@ -24,6 +24,10 @@ static func save_config(path:String, data:Dictionary)->void:
 	config.save(path)
 
 static func load_config(path:String)->Dictionary:
+	var directory: = Directory.new()
+	if !directory.file_exists(path):
+		return {}
+	
 	var config = ConfigFile.new()
 	config.load(path)
 	var data:Dictionary = config.get_value("save_dictionary", "data_key")
@@ -51,6 +55,10 @@ static func save_json(path:String, data:Dictionary)->void:
 	file.store_line(to_json(data))
 
 static func load_json(path:String)->Dictionary:
+	var directory: = Directory.new()
+	if !directory.file_exists(path):
+		return {}
+	
 	var file = File.new()
 	file.open(path, File.READ)
 	var data:Dictionary = parse_json(file.get_line())
