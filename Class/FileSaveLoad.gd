@@ -1,5 +1,6 @@
 class_name FileSaveLoad
 #static functions doesn't require to make an instance of the FileSaveLoad class
+#FileSaveLoad.save_json( {volume = 100, resolution = Vector2(320, 180)} )
 
 
 ###### J S O N # V O O R H E E S #########
