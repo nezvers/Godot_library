@@ -12,6 +12,12 @@ static func save_config(path:String, data:Dictionary)->void:
 		print("invalid file name")
 		return
 	
+	var directory: = Directory.new()
+	var dir: = path.get_base_dir() +"/"
+	if !directory.dir_exists(dir):
+# warning-ignore:return_value_discarded
+		directory.make_dir_recursive(dir)
+	
 	#Save the file
 	var config = ConfigFile.new()
 	config.set_value("save_dictionary", "data_key", data)
@@ -31,6 +37,12 @@ static func save_json(path:String, data:Dictionary)->void:
 	if !path.get_file().is_valid_filename():
 		print("invalid file name")
 		return
+	
+	var directory: = Directory.new()
+	var dir: = path.get_base_dir() +"/"
+	if !directory.dir_exists(dir):
+# warning-ignore:return_value_discarded
+		directory.make_dir_recursive(dir)
 	
 	#Save the file
 	var file: = File.new()
@@ -52,6 +64,12 @@ static func save_resource(path:String, res:Resource)->void:
 	if !path.get_file().is_valid_filename():
 		print("invalid file name")
 		return
+	
+	var directory: = Directory.new()
+	var dir: = path.get_base_dir() +"/"
+	if !directory.dir_exists(dir):
+# warning-ignore:return_value_discarded
+		directory.make_dir_recursive(dir)
 	
 	#Save the file
 # warning-ignore:return_value_discarded
