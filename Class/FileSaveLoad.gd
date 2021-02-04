@@ -28,7 +28,7 @@ static func load_json(path:String)->Dictionary:
         
     #Read the json file
     var file = File.new()
-    file.open(SAVE_PATH, File.READ)
+    file.open(path, File.READ)
     var data:Dictionary = parse_json(file.get_line())
     return data
 
@@ -38,7 +38,7 @@ static func load_json(path:String)->Dictionary:
 static func save_config(path:String, data:Dictionary)->void:
     if !path.get_file().is_valid_filename():
 		print("invalid file name")
-		return 1
+		return
     
     #chech if directory exists. If not then create it
     var directory: = Directory.new()
