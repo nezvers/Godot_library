@@ -1,4 +1,5 @@
 class_name KinematicEquations
+# Some formulas allowing calculating unknown value for kinematic movement
 
 static func get_displacement(initialVelocity:float, finalVelocity, time:float)->float:	#get_distance
 	return (initialVelocity+finalVelocity) / 2 * time
