@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Addons/Godot_library/Nodes/AfterImageSprite/AfterImage.gd" id="1"]
+[ext_resource type="PackedScene" path="res://Addons/Godot_library/Nodes/AfterImageSprite/AfterImageSprite.tscn" id="2"]
+
+
+[node name="AfterImage" type="Node2D"]
+script = ExtResource("1")
+spriteScene = ExtResource("2")
+interval = 0.02
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_timeout"]

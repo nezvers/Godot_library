@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Material" uid="uid://d225cyorkm8mp" path="res://Resources/Materials/ColorFlashMaterial.tres" id="1_ee7lu"]
+[ext_resource type="Script" path="res://Addons/Godot_library/Nodes/ColorFlash/ColorFlash.gd" id="2_lhngs"]
+
+[node name="ColorFlash" type="CanvasGroup"]
+material = ExtResource("1_ee7lu")
+script = ExtResource("2_lhngs")
+color = Color(1, 1, 1, 1)
+time = 0.3

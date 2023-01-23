@@ -1,8 +1,16 @@
 extends Resource
 class_name AssetResource
 
+enum PathMode{
+	CANCEL,
+	OVERWRITE,
+	INDEX,
+}
+
 signal updated
 signal failed(error:String)
+signal filename_exists # awaits path processing
+signal path_process_choice(value:PathMode)
 
 @export var list:Array[String]
 @export var file_path:String
@@ -46,8 +54,10 @@ func load_resource(force:bool = false)->void:
 	initialize(force)
 
 func add_asset(value:String)->void:
-	list.append(value)
 	var key:String = value.get_file().get_basename()
+	if dictionary.has(key):
+		return
+	list.append(value)
 	dictionary[key] = value
 	save_resource()
 	updated.emit()
@@ -62,23 +72,47 @@ func delete_asset(key:String)->void:
 	save_resource()
 	updated.emit()
 
-func save_asset(asset:Resource, asset_name:String)->void:
-	var path: = process_path(asset_name)
+func save_asset(asset:Resource, asset_name:String, mode:PathMode = PathMode.INDEX)->void:
+	if asset == null:
+		print("No asset to save")
+		return
+	if asset_name.is_empty():
+		print("no asset name to save")
+		return
 	
-	DirAccess.make_dir_recursive_absolute(asset_dir)
+	var path:String = await process_path(asset_name, mode)
+	if path.is_empty():
+		return
+	
+	var err = DirAccess.make_dir_recursive_absolute(asset_dir)
+	if err:
+		print("Failed make directory")
+		return
 	asset.resource_path = path
-	var err: = ResourceSaver.save(asset, asset.resource_path)
+	err = ResourceSaver.save(asset, asset.resource_path)
 	if err:
 		print("failed saving: ", path)
 		return
 	add_asset(asset.resource_path)
 
-func process_path(asset_name:String)->String:
-	var path:String = (asset_dir + asset_name + '.' + asset_extension).to_lower()
+func process_path(asset_name:String, mode:PathMode)->String:
+	asset_name = asset_name.to_lower()
+	var path:String = (asset_dir + asset_name + '.' + asset_extension)
 	if !FileAccess.file_exists(path):
 		return path
+	
+	filename_exists.emit()
+	if mode == -1:
+		mode = await path_process_choice
+	
+	if mode == PathMode.CANCEL:
+		return ""
+	elif mode == PathMode.OVERWRITE:
+		return path
+	
+	# TODO: handle already indexed filenames
 	var i:int = 0
 	while FileAccess.file_exists(path):
-		path = (asset_dir + asset_name + '_' + str(i) + '.' + asset_extension).to_lower()
+		path = (asset_dir + asset_name + '_' + str(i) + '.' + asset_extension)
 		i += 1
 	return path
