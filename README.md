@@ -1,2 +1,2 @@
-# Godot library
+# Godot 4 library
 
