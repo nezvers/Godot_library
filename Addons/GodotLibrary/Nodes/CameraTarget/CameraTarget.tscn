@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxdkgsrc22iwe"]
+[gd_scene load_steps=4 format=3 uid="uid://c7blomahfuxp0"]
 
-[ext_resource type="Script" path="res://Addons/Godot_library/Nodes/CameraTarget/CameraTarget.gd" id="1_v0uqp"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CameraTarget/CameraTarget.gd" id="1_v0uqp"]
 [ext_resource type="Resource" uid="uid://c3ich4cy7s1ip" path="res://Addons/LevelEditor/Resource/ReferenceNodeResource/GameCamera.tres" id="2_xr8rk"]
 [ext_resource type="Resource" path="res://Addons/LevelEditor/Resource/ReferenceNodeResource/IsEditorReference.tres" id="3_ux6mi"]
 

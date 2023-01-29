@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://Addons/Godot_library/Nodes/AfterImageSprite/AfterImageSprite.gd" id="1"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/AfterImageSprite/AfterImageSprite.gd" id="1"]
 
 
 [sub_resource type="Animation" id="1"]

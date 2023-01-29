@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://Addons/Godot_library/Nodes/TrailLine2D/Trail.gd" id="1"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/TrailLine2D/Trail.gd" id="1"]
 
 
 [sub_resource type="Curve" id=36]

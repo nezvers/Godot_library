@@ -44,7 +44,7 @@ func save_resource()->void:
 func load_resource(force:bool = false)->void:
 	if is_initialized && !force:
 		return
-	var data:SceneResource
+	var data:AssetResource
 	if file_path.is_empty() && FileAccess.file_exists(resource_path):
 		data = ResourceLoader.load(resource_path)
 	elif FileAccess.file_exists(file_path):

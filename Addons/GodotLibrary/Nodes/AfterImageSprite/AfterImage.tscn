@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Addons/Godot_library/Nodes/AfterImageSprite/AfterImage.gd" id="1"]
-[ext_resource type="PackedScene" path="res://Addons/Godot_library/Nodes/AfterImageSprite/AfterImageSprite.tscn" id="2"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/AfterImageSprite/AfterImage.gd" id="1"]
+[ext_resource type="PackedScene" path="res://Addons/GodotLibrary/Nodes/AfterImageSprite/AfterImageSprite.tscn" id="2"]
 
 
 [node name="AfterImage" type="Node2D"]

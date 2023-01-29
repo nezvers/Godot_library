@@ -1,6 +1,6 @@
 @tool
 extends CanvasGroup
-@export var color:Color : set = set_color
+@export var color:Color = Color(1.0, 1.0, 1.0, 0.05) : set = set_color
 @export var time: = 0.5
 
 var tween:Tween
