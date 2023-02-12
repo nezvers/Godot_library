@@ -38,7 +38,7 @@ func _process(delta:float)->void:
 	global_position.x = clamp(global_position.x, followTarget.global_position.x + limit_horizontal.x, followTarget.global_position.x + limit_horizontal.y)
 	global_position.y = clamp(global_position.y, followTarget.global_position.y + limit_vertical.x, followTarget.global_position.y + limit_vertical.y)
 	
-	(cameraReference.node as Camera2D).global_position = global_position
+	(cameraReference.node as Camera2D).global_position = global_position.round()
 #	queue_redraw()
 #
 #func _draw()->void:

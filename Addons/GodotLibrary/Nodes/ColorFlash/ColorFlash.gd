@@ -5,6 +5,7 @@ extends CanvasGroup
 
 var tween:Tween
 
+
 func set_color(value:Color)->void:
 	if material == null:
 		return
