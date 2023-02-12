@@ -2,9 +2,10 @@ extends Resource
 class_name AssetResource
 
 enum PathMode{
-	CANCEL,
+	WAIT,
 	OVERWRITE,
 	INDEX,
+	CANCEL,
 }
 
 signal updated
@@ -101,8 +102,8 @@ func process_path(asset_name:String, mode:PathMode)->String:
 	if !FileAccess.file_exists(path):
 		return path
 	
-	filename_exists.emit()
-	if mode == -1:
+	if mode == PathMode.WAIT:
+		filename_exists.emit()
 		mode = await path_process_choice
 	
 	if mode == PathMode.CANCEL:
