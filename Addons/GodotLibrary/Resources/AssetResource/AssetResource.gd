@@ -14,6 +14,7 @@ signal filename_exists # awaits path processing
 signal path_process_choice(value:PathMode)
 
 @export var list:Array[String]
+@export var selected:String : set = set_selected
 @export var file_path:String
 @export var asset_dir:String
 @export var asset_extension:String
@@ -21,7 +22,13 @@ signal path_process_choice(value:PathMode)
 var dictionary:Dictionary
 var is_initialized: = false
 
-func get_asset(value:String)->PackedScene:
+func set_selected(value:String)->void:
+	if selected == value:
+		return
+	selected = value
+	save_resource()
+
+func get_asset(value:String)->Resource:
 	if !dictionary.has(value):
 		return null
 	return load(dictionary.get(value))
@@ -36,6 +43,8 @@ func initialize(force:bool = false)->void:
 	is_initialized = true
 
 func save_resource()->void:
+	if resource_path.is_empty():
+		return
 	if file_path.is_empty():
 		ResourceSaver.save(self, resource_path)
 	else:
@@ -73,12 +82,19 @@ func delete_asset(key:String)->void:
 	save_resource()
 	updated.emit()
 
+func clear_assets()->void:
+	for key in dictionary.keys():
+		var file_name:String = dictionary[key]
+		DirAccess.remove_absolute(file_name)
+	list.clear()
+	dictionary.clear()
+
 func save_asset(asset:Resource, asset_name:String, mode:PathMode = PathMode.INDEX)->void:
 	if asset == null:
-		print("No asset to save")
+		failed.emit("No asset to save")
 		return
 	if asset_name.is_empty():
-		print("no asset name to save")
+		failed.emit("no asset name to save")
 		return
 	
 	var path:String = await process_path(asset_name, mode)
@@ -87,17 +103,17 @@ func save_asset(asset:Resource, asset_name:String, mode:PathMode = PathMode.INDE
 	
 	var err = DirAccess.make_dir_recursive_absolute(asset_dir)
 	if err:
-		print("Failed make directory")
+		failed.emit("Failed make a directory")
 		return
 	asset.resource_path = path
 	err = ResourceSaver.save(asset, asset.resource_path)
 	if err:
-		print("failed saving: ", path)
+		failed.emit("failed saving: " + path)
 		return
 	add_asset(asset.resource_path)
 
 func process_path(asset_name:String, mode:PathMode)->String:
-	asset_name = asset_name.to_lower()
+	#asset_name = asset_name.to_lower()
 	var path:String = (asset_dir + asset_name + '.' + asset_extension)
 	if !FileAccess.file_exists(path):
 		return path
@@ -107,6 +123,7 @@ func process_path(asset_name:String, mode:PathMode)->String:
 		mode = await path_process_choice
 	
 	if mode == PathMode.CANCEL:
+		failed.emit("Path already exists")
 		return ""
 	elif mode == PathMode.OVERWRITE:
 		return path
