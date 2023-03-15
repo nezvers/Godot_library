@@ -26,12 +26,18 @@ func set_selected(value:String)->void:
 	if selected == value:
 		return
 	selected = value
-	save_resource()
 
-func get_asset(value:String)->Resource:
-	if !dictionary.has(value):
+func get_asset(key:String)->Resource:
+	if !dictionary.has(key):
 		return null
-	return load(dictionary.get(value))
+	var path: String = dictionary.get(key)
+	if path == null:
+		print("AssetResource: Something wrong")
+		return
+	var asset:Resource = load(path)
+	if asset == null:
+		print("AssetResource: failed load: ", path)
+	return asset
 
 func initialize(force:bool = false)->void:
 	if is_initialized && !force:

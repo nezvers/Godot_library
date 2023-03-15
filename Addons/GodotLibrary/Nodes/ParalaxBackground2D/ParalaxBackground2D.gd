@@ -9,13 +9,10 @@ var camera:Camera2D
 func _ready()->void:
 	global_position = Vector2.ZERO
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	cameraReference.updated.connect(validate)
+	cameraReference.listen(self, validate)
 	for layer in get_children():
 		if layer is ParallaxLayer2D:
 			layers.append(layer)
-#	for layer in layers:
-#		layer.set_as_top_level(true)
-	validate()
 
 func validate()->void:
 	if cameraReference.node == null:

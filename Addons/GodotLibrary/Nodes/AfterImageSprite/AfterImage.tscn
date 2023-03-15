@@ -1,8 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bgcef67dvlljn"]
 
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/AfterImageSprite/AfterImage.gd" id="1"]
 [ext_resource type="PackedScene" path="res://Addons/GodotLibrary/Nodes/AfterImageSprite/AfterImageSprite.tscn" id="2"]
-
 
 [node name="AfterImage" type="Node2D"]
 script = ExtResource("1")

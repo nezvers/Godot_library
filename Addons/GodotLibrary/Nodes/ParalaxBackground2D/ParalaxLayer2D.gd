@@ -5,21 +5,20 @@ class_name ParallaxLayer2D
 @export var repeat:Vector2i
 @export var sprite_offset:Vector2i : set = set_sprite_offset
 @export var texture_size:Vector2
-@export var debug:bool = false
 
 func _ready()->void:
-	if texture == null:
+	if texture != null:
+		texture_size = texture.get_size()
+	var pp_can_process = get_parent().get_parent().can_process()
+	if !pp_can_process || texture == null:
 		return
-	texture_size = texture.get_size()
 	create_repeats()
 
 func layer_position(pos:Vector2)->void:
-	var off:Vector2 = (pos * speed)
-	off.x = fmod(off.x, texture_size.x)
-	off.y = fmod(off.y, texture_size.y)
-	global_position = (pos - off).round()
-	if debug:
-		print(global_position.x)
+	var lPos:Vector2 = (pos * speed)
+	lPos.x = fmod(lPos.x, texture_size.x)
+	lPos.y = fmod(lPos.y, texture_size.y)
+	global_position = (pos - lPos).round()
 
 func create_repeats()->void:
 	if texture == null:
@@ -36,6 +35,5 @@ func create_repeats()->void:
 func set_sprite_offset(value:Vector2i)->void:
 	sprite_offset = value
 	offset = value
-	#super.set_offset(value)
 	for child in get_children():
 		child.offset = offset

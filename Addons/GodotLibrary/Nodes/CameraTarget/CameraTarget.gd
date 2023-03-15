@@ -14,7 +14,7 @@ var difference: = Vector2.ZERO
 var pos_delta: = Vector2.ZERO
 
 func _ready()->void:
-	if isEditorReference.node != null:
+	if !can_process():
 		return
 	set_as_top_level(true)
 	global_position = followTarget.global_position
@@ -22,15 +22,18 @@ func _ready()->void:
 
 func check_camera()->void:
 	if cameraReference.node == null:
-		set_process(false)
+		set_physics_process(false)
 		return
-	set_process(true)
+	set_physics_process(true)
 	global_position = followTarget.global_position
 	cameraReference.node.global_position = global_position
 	prev_pos = global_position
 	pos_delta = global_position
 
-func _process(delta:float)->void:
+func snap_position()->void:
+	global_position = followTarget.global_position
+
+func _physics_process(delta:float)->void:
 	difference = forward_strength * (followTarget.global_position - prev_pos)
 	prev_pos = followTarget.global_position
 	global_position.x = lerp(global_position.x, followTarget.global_position.x + difference.x, delta * lerpSpeed.x)

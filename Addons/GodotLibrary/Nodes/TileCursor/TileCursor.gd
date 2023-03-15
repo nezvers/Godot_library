@@ -20,7 +20,9 @@ var drag_from:Vector2i
 
 @onready var target_position:Vector2 = get_global_mouse_position()
 @onready var mouse_pos:Vector2 = get_global_mouse_position()
-
+var draw_action:StringName = "TileCursor_draw"
+var drag_action:StringName = "TileCursor_drag"
+var erase_action:StringName = "TileCursor_erase"
 
 func _ready()->void:
 	var parent:Node = get_parent()
@@ -33,46 +35,47 @@ func _ready()->void:
 	register_actions()
 
 func register_actions()->void:
-	InputMap.add_action("TileCursor_drag")
-	InputMap.action_add_event("TileCursor_drag", dragEvent)
-	InputMap.add_action("TileCursor_draw")
-	InputMap.action_add_event("TileCursor_draw", drawEvent)
-	InputMap.add_action("TileCursor_erase")
-	InputMap.action_add_event("TileCursor_erase", eraseEvent)
+	InputMap.add_action(drag_action)
+	InputMap.action_add_event(drag_action, dragEvent)
+	InputMap.add_action(draw_action)
+	InputMap.action_add_event(draw_action, drawEvent)
+	InputMap.add_action(erase_action)
+	InputMap.action_add_event(erase_action, eraseEvent)
 
 func _exit_tree()->void:
-	InputMap.erase_action("TileCursor_drag")
-	InputMap.erase_action("TileCursor_draw")
-	InputMap.erase_action("TileCursor_erase")
+	InputMap.erase_action(drag_action)
+	InputMap.erase_action(draw_action)
+	InputMap.erase_action(erase_action)
 
 func _unhandled_input(event:InputEvent)->void:
 	if event is InputEventMouseMotion:
 		var mp: = get_global_mouse_position()
 		process_position(mp - mouse_pos)
 		mouse_pos = mp
-	elif event.is_action_pressed("TileCursor_draw"):
+	elif event.is_action_pressed(draw_action):
 		drawing = true
 		if !dragging:
 			tileMap.set_cells_terrain_connect(terrain_index, [cursorPos], terrain_set_index, terrain_index)
 		else:
 			drag_from = cursorPos
-	elif event.is_action_pressed("TileCursor_erase"):
+	elif event.is_action_pressed(erase_action):
 		erasing = true
 		if !dragging:
 			tileMap.set_cells_terrain_connect(terrain_index, [cursorPos], terrain_set_index, -1)
 		else:
 			drag_from = cursorPos
-	elif event.is_action_pressed("TileCursor_drag"):
+	elif event.is_action_pressed(drag_action):
 		dragging = true
-	elif event.is_action_released("TileCursor_drag"):
+		drag_from = cursorPos
+	elif event.is_action_released(drag_action):
 		dragging = false
 		queue_redraw()
-	elif event.is_action_released("TileCursor_draw"):
+	elif event.is_action_released(draw_action):
 		drawing = false
 		queue_redraw()
 		if dragging:
 			set_tile_region(terrain_index)
-	elif event.is_action_released("TileCursor_erase"):
+	elif event.is_action_released(erase_action):
 		erasing = false
 		queue_redraw()
 		if dragging:
@@ -134,7 +137,9 @@ func check_visibility()->void:
 		var tileData: = tileMap.get_cell_tile_data(i, cursorPos)
 		if tileData == null:
 			continue
-		var z: = tileMap.get_layer_z_index(i) - get_layer_z_index(terrain_index)
+		var tmz: = tileMap.get_layer_z_index(i)
+		var lz: = get_layer_z_index(terrain_index)
+		var z: = tmz - lz
 		if z < 1:
 			continue
 		set_in_front(false)

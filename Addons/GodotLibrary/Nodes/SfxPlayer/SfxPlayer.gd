@@ -1,6 +1,7 @@
 extends AudioStreamPlayer
+class_name SfxPlayer
 
-@export var retriggerTime: = 0.1
+@export var retriggerTime: = 0.02
 @export var randRange: = Vector2(0.8, 1.25)
 
 func play_sfx()->void:

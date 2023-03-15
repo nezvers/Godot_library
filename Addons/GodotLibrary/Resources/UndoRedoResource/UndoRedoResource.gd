@@ -17,7 +17,7 @@ class UndoRedoAction:
 	var do_methodcalls:Array[MethodCall]
 	var undo_methodcalls:Array[MethodCall]
 	
-	func _init(action_name:String)->void:
+	func _init(action_name:String):
 		name = action_name
 	
 	func do()->void:
@@ -42,24 +42,24 @@ func create_action(action_name:String)->void:
 	current_action = UndoRedoAction.new(action_name)
 
 func add_do_method(value:Callable)->void:
-	assert(current_action != null, "No current action")
+	assert(current_action != null) #,"No current action")
 	current_action.do_methods.append(value)
 
 func add_undo_method(value:Callable)->void:
-	assert(current_action != null, "No current action")
+	assert(current_action != null) #,"No current action")
 	current_action.undo_methods.append(value)
 
 func add_do_methodcall(object:Object, method_name:StringName, args:Array)->void:
-	assert(current_action != null, "No current action")
+	assert(current_action != null) #,"No current action")
 	current_action.do_methodcalls.append(MethodCall.new(object, method_name, args))
 
 func add_undo_methodcall(object:Object, method_name:StringName, args:Array)->void:
-	assert(current_action != null, "No current action")
+	assert(current_action != null) #,"No current action")
 	current_action.undo_methodcalls.append(MethodCall.new(object, method_name, args))
 
 # triggers redo action automatically
 func commit_action()->void:
-	assert(current_action != null, "No current action")
+	assert(current_action != null) #,"No current action")
 	action_list.resize(index) # clear previous redo
 	action_list.append(current_action)
 	current_action = null

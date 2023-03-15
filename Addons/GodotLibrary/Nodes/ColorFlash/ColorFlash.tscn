@@ -8,3 +8,4 @@ material = ExtResource("1_c1kge")
 script = ExtResource("2_lhngs")
 color = Color(1, 1, 1, 1)
 time = 0.3
+flash_material = ExtResource("1_c1kge")

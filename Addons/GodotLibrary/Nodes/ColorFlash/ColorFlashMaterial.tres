@@ -1,9 +1,8 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dht7eymudnsie"]
 
-[ext_resource type="Shader" path="res://Addons/GodotLibrary/Nodes/ColorFlash/ColorFlash.gdshader" id="1_lq3ti"]
+[ext_resource type="Shader" path="res://Addons/GodotLibrary/Nodes/ColorFlash/ColorFlash.gdshader" id="1_cu74t"]
 
 [resource]
-resource_local_to_scene = true
-shader = ExtResource("1_lq3ti")
+shader = ExtResource("1_cu74t")
 shader_parameter/overlay = Color(1, 1, 1, 1)
 shader_parameter/blend = 0.0
