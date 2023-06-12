@@ -36,3 +36,11 @@ static func dist_to_line_3d(pos:Vector3, line_start:Vector3, line_end:Vector3)->
 	if bv.dot(ab) >= 0.0:
 		return bv.length()
 	return ab.cross(ac).length() / ab.length()
+
+
+## Outline the formula
+static func dampened_spring(displacement, damp, velocity, spring:float, delta:float):
+	var force = -spring * displacement - damp * velocity
+	velocity += force * delta
+	displacement += velocity * delta
+	return displacement

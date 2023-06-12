@@ -1,40 +1,45 @@
 extends Node2D
 
 @export var spriteScene:PackedScene
-@export var interval:float = 0.1
 
 @export var targetPath:NodePath
 @export var bodyPath:NodePath
 
-@onready var timer: = $Timer
 @onready var targetSprite:Sprite2D = get_node(targetPath)
 @onready var body:Node2D = get_node(bodyPath)
 
+var tick:int = 0
+var tick_inteval:int = 1
+
 func _ready()->void:
-	timer.wait_time = interval
-#	set_process(false)
+	global_position = Vector2.ZERO
+	set_physics_process(false)
 
 func Spawn()->void:
+	tick = (tick + 1) % tick_inteval
+	if tick != 0:
+		return
+	
 	var inst:Sprite2D = spriteScene.instantiate()
 	inst.texture = targetSprite.texture
+	inst.top_level = true
 	inst.global_position = targetSprite.global_position
 	inst.hframes = targetSprite.hframes
 	inst.vframes = targetSprite.vframes
 	inst.frame = targetSprite.frame
 	inst.scale = body.scale
-	add_child(inst)
+	owner.get_parent().add_child(inst)
 
-func _process(_delta:float)->void:
-	global_position = Vector2.ZERO
+func _physics_process(_delta:float)->void:
+	Spawn()
 
 func Start()->void:
-	timer.start()
+	tick = -1
 	Spawn()
-#	set_process(true)
+	set_physics_process(true)
 
 func Stop()->void:
-	timer.stop()
-#	set_process(false)
+	set_physics_process(false)
 
 func _timeout():
 	Spawn()

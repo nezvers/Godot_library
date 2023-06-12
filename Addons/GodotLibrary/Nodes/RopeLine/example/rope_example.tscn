@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxlvxysgry5du"]
+
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/RopeLine/Rope2D.gd" id="1_2b2te"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/RopeLine/RopeFollower2D.gd" id="2_pi7l6"]
+[ext_resource type="Texture2D" uid="uid://rw0e1sy1owe0" path="res://icon.png" id="3_115fe"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/RopeLine/RopeMover.gd" id="4_thwqm"]
+
+[node name="RopeExample" type="Node2D"]
+
+[node name="Rope2D" type="Node2D" parent="."]
+position = Vector2(267, 70)
+script = ExtResource("1_2b2te")
+split_index = 12
+stiffness = 0.578
+frequency = 0.01
+amplitude = 1.0
+max_amplitude = 2.047
+
+[node name="RopeFollower2D" type="Node2D" parent="." node_paths=PackedStringArray("rope")]
+script = ExtResource("2_pi7l6")
+rope = NodePath("../Rope2D")
+bottom_bound = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="RopeFollower2D"]
+texture = ExtResource("3_115fe")
+
+[node name="RopeMover" type="Node2D" parent="RopeFollower2D" node_paths=PackedStringArray("rope_follower", "rope")]
+script = ExtResource("4_thwqm")
+speed = 50.0
+rope_split = true
+rope_follower = NodePath("..")
+rope = NodePath("../../Rope2D")

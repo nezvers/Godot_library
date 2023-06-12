@@ -16,11 +16,11 @@ func _ready()->void:
 
 func validate()->void:
 	if cameraReference.node == null:
-		set_process(false)
+		set_physics_process(false)
 	else:
-		set_process(true)
+		set_physics_process(true)
 		camera = cameraReference.node
 
-func _process(_delta:float)->void:
+func _physics_process(_delta:float)->void:
 	for layer in layers:
 		layer.layer_position(camera.global_position)
