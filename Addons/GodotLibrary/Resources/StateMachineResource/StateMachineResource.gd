@@ -12,7 +12,7 @@ signal state_exit
 ## Emitted when state has been assigned.
 signal state_enter
 ## Emitted when transitioning has been canceled and is possible to inject override state.
-signal blocked_exit
+signal state_enter_canceled
 ## Utility signal for state machine related signalling outside transitioning function.
 signal continue_transition
 
@@ -36,7 +36,7 @@ func transition(_next_state)->void:
 	if cancel_enter:
 		cancel_enter = false
 #		print("Blocked: ", state_names[state], " to ", state_names[next_state])
-		blocked_exit.emit()
+		state_enter_canceled.emit()
 		return
 	
 	previous_state = state
