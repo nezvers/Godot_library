@@ -1,5 +1,6 @@
 ## Simple signal based state machine, that allow to cancel transitioning between 
 ## certain changes to interupt with different state instead.
+## Tip: Adding a variable type to state variables will make easier to work with. They are generic for library.
 ## Tip: Be mindful about keeping a resource in the memory for it not to loose property values.
 class_name StateMachineResource
 extends Resource
