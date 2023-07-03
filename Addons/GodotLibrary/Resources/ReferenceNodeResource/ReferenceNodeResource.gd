@@ -11,8 +11,9 @@ func add(value:Node)->void:
 	updated.emit()
 	for callback in listeners:
 		callback.call()
-	await value.tree_exited
-	remove(value)
+	if value == null:
+		return
+	value.tree_exited.connect(remove.bind(node), CONNECT_ONE_SHOT)
 
 func remove(value:Node)->void:
 	if node != value:
@@ -25,5 +26,8 @@ func remove(value:Node)->void:
 func listen(inst:Node, callback:Callable)->void:
 	listeners.append(callback)
 	callback.call()
-	await inst.tree_exited
-	listeners.erase(callback)
+	inst.tree_exited.connect(erase_listener.bind(callback), CONNECT_ONE_SHOT)
+
+func erase_listener(callback:Callable)->void:
+	if listeners.has(callback):
+		listeners.erase(callback)

@@ -1,4 +1,8 @@
 class_name DictionaryResource
-extends Resource
+extends ValueResource
 
-@export var value:Dictionary
+@export var value:Dictionary : set = set_value
+
+func set_value(_value:Dictionary)->void:
+	value = _value
+	updated.emit()

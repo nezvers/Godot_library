@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HealthEffectResource" load_steps=2 format=3 uid="uid://277ni54rx66i"]
+
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/EffectResource/Examples/HealthEffectResource.gd" id="1_kvncb"]
+
+[resource]
+resource_name = "Status: Healing Minor"
+script = ExtResource("1_kvncb")
+value = 1
+tick_count = 4
+tick_time = 0.5
+description = ""
