@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bumf0o5owglj7"
+path="res://.godot/imported/Punch impact.wav-51416bfc5cfb8a833eecbe9f8f710123.sample"
+
+[deps]
+
+source_file="res://Addons/GodotLibrary/Assets/Audio/Punch impact.wav"
+dest_files=["res://.godot/imported/Punch impact.wav-51416bfc5cfb8a833eecbe9f8f710123.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

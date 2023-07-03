@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/ValueResource/ResistanceValueResource.gd" id="1_0e2n3"]
 
 [resource]
-resource_name = "Resistance: None"
+resource_name = "Player Resistance: None"
 script = ExtResource("1_0e2n3")
 value = 1
 min_value = 0

@@ -33,6 +33,7 @@ func effect_tick(effect_node:Node)->void:
 	if damage_value > 0:
 		for health in health_list:
 			health.value -= damage_value
+			play_sound()
 #			print("damaged: ", health.value)
 	else:
 		resisted.emit(effect_node)

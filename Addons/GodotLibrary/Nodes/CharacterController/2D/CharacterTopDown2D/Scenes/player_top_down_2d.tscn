@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c2wwc55jf6xup"]
+[gd_scene load_steps=21 format=3 uid="uid://c2wwc55jf6xup"]
 
 [ext_resource type="PackedScene" uid="uid://dgwgk16s7lgte" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/Scenes/base_top_down_2d.tscn" id="1_geisj"]
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Nodes/Player2DInput.gd" id="2_7ditn"]
@@ -6,12 +6,8 @@
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DStateResource.gd" id="3_kgho0"]
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DMovementResource.gd" id="4_g71ow"]
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/Resource/ActionEventResource.gd" id="4_pewmg"]
-[ext_resource type="Resource" uid="uid://277ni54rx66i" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/Resources/healing_minor_status.tres" id="5_acr41"]
-[ext_resource type="Resource" uid="uid://c60pi33dvlaal" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/Resources/healing_minor.tres" id="6_c4b82"]
+[ext_resource type="Resource" uid="uid://bfm0q0fgticpp" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/Resources/poison_minor_status.tres" id="5_q3uwj"]
 [ext_resource type="Resource" uid="uid://b0414h3mjcwvu" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/Resources/player_health_value.tres" id="6_ektqn"]
-[ext_resource type="Resource" uid="uid://dgfm26p4w21jv" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/Resources/damage_minor.tres" id="7_umxpl"]
-[ext_resource type="Resource" uid="uid://bfm0q0fgticpp" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/Resources/damage_minor_status.tres" id="8_24hwl"]
-[ext_resource type="Resource" uid="uid://b3bdxhe7d3d5i" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/Resources/type_damage.tres" id="9_mxpcx"]
 [ext_resource type="Resource" uid="uid://cs1wkh724ftrh" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/Resources/player_resistance_value.tres" id="10_ajxdv"]
 
 [sub_resource type="Resource" id="Resource_isl6d"]
@@ -91,8 +87,8 @@ input_resource = SubResource("Resource_isl6d")
 character_state = SubResource("Resource_xbkoh")
 move_stats = SubResource("Resource_c3lun")
 
-[node name="DamageArea2D" parent="." index="4"]
-effect_resource_list = Array[Resource("res://Addons/GodotLibrary/Resources/EffectResource/EffectResource.gd")]([ExtResource("5_acr41"), ExtResource("6_c4b82"), ExtResource("7_umxpl"), ExtResource("8_24hwl"), ExtResource("9_mxpcx")])
+[node name="EffectArea2D" parent="." index="4"]
+effect_resource_list = Array[Resource("res://Addons/GodotLibrary/Resources/EffectResource/EffectResource.gd")]([ExtResource("5_q3uwj")])
 value_resource_list = Array[Resource("res://Addons/GodotLibrary/Resources/ValueResource/ValueResource.gd")]([ExtResource("6_ektqn"), ExtResource("10_ajxdv")])
 
 [node name="PlayerInput" type="Node2D" parent="." index="5"]

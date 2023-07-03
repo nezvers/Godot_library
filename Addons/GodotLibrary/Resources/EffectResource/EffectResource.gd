@@ -8,26 +8,32 @@ extends Resource
 @export var tick_time:float = 0.0
 ## Place to fill the description for an effect.
 @export var description:String
+@export var sound:SoundResource
 
 ## Assign EffectNode as target to apply an effect.
 ## - Do checks if needed EffectNode2D or EffectNode3D
 ## - effect_node.append_effect(self) if needed to be updated
 ## - Think if it needs to pass self.duplicate()
 ## - Considder assigning a Tween to EffectNode instead of a _process callback.
-func apply(effect_node:Node, caster_node:Node = null)->void:
+func apply(effect_node:Node, _caster_node:Node = null)->void:
 	effect_tick(effect_node)
 	if tick_count -1 < 1:
 		return
+	tick_count -= 1
 	var tween: = effect_node.create_tween()
 	for i in tick_count:
-		tween.tween_callback(effect_tick.bind(effect_node)).set_delay(tick_time * i)
+		tween.tween_callback(effect_tick.bind(effect_node)).set_delay(tick_time * (i+1))
 
 ## Dedicated place to use effect processing.
 func effect_tick(effect_node:Node)->void:
 	var _node:EffectNode2D = effect_node
 	for value_resource in _node.value_resource_list:
-		print(resource_name, ": ", value_resource)
+		# Do something with value_resource
+		play_sound()
 
+func play_sound()->void:
+	if sound != null:
+		sound.play_managed()
 
 ## Called by EffectNode. It's a place to 
 ## - Count down a timer for ticks if needed
