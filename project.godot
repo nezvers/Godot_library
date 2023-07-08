@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-CameraManager="*res://Addons/GodotLibrary/Singletons/CameraManager/Scenes/camera_manager.tscn"
-SoundManager="*res://Addons/GodotLibrary/Singletons/SoundManager/Scenes/sound_manager.tscn"
+SoundManager="*res://Addons/GodotLibrary/Singletons/SoundManager/Scenes/SoundManager.tscn"
+CameraManager="*res://Addons/GodotLibrary/Singletons/CameraManager/Scenes/CameraManager.tscn"
 
 [display]
 

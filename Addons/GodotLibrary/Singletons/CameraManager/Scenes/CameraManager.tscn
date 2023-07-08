@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq8unrwnbpsuu"]
+
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Singletons/CameraManager/CameraManager.gd" id="1_mels1"]
+[ext_resource type="Resource" uid="uid://denx42g6vlhqc" path="res://Addons/GodotLibrary/Singletons/CameraManager/Resources/MainCameraReference.tres" id="2_a1w0g"]
+
+[node name="CameraManager" type="Node2D"]
+script = ExtResource("1_mels1")
+main_camera_reference = ExtResource("2_a1w0g")
