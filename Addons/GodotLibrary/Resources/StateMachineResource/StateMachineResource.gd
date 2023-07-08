@@ -18,16 +18,16 @@ signal state_enter_canceled
 signal continue_transition
 
 ## Current state
-var state
+var state:int
 ## Useful for detecting specific transition to interupt.
-var next_state
+var next_state:int
 ## Useful for detecting specific transition to interupt.
-var previous_state
+var previous_state:int
 ## Flag to transition logic to cancel transitioning. Used during state_exit 
 var cancel_enter:bool = false
 
 ## Method to transition between states.
-func transition(_next_state)->void:
+func transition(_next_state:int)->void:
 	if _next_state == state:
 		state_repeat.emit()
 #		print("Repeat: ", state_names[_next_state])

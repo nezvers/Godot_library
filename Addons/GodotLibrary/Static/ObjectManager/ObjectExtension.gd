@@ -1,4 +1,4 @@
-class_name ObjectManager
+class_name ObjectExtension
 extends Node
 
 

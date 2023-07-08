@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SoundManager="*res://Addons/GodotLibrary/Resources/SoundResource/SoundManager.gd"
+SoundManager="*res://Addons/GodotLibrary/Singletons/SoundManager/SoundManager.gd"
 
 [display]
 

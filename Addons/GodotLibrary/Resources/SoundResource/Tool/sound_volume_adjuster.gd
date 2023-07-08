@@ -10,7 +10,6 @@ extends Control
 @export var value_label_container:Control
 @export var slider_container:Control
 @export var save_button:Button
-@export var sound_player:SoundPlayer
 
 
 func _ready()->void:
@@ -58,8 +57,7 @@ func set_value_column_width()->void:
 
 func slider_released(_value_changed:bool, slider:HSlider, sound:SoundResource)->void:
 	sound.volume = lerp(-80.0, +24.0, slider.value)
-	sound_player.sound_resource = sound
-	sound_player.play_sound()
+	sound.play_managed()
 
 
 func slider_value_changed(value:float, label:Label)->void:

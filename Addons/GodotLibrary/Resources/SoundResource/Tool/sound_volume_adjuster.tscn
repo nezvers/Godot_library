@@ -1,37 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://br3w38jrt3feh"]
+[gd_scene load_steps=2 format=3 uid="uid://br3w38jrt3feh"]
 
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/SoundResource/Tool/sound_volume_adjuster.gd" id="1_ychsr"]
-[ext_resource type="Resource" uid="uid://bdspbu7wcbm83" path="res://Assets/Audio/Sounds/AttackSound.tres" id="2_faqdy"]
-[ext_resource type="Resource" uid="uid://c7klwagnjft5b" path="res://Assets/Audio/Sounds/BonnerCharge.tres" id="3_ucp84"]
-[ext_resource type="Resource" uid="uid://7x1jwytmw8nw" path="res://Assets/Audio/Sounds/BonnerShootEmote.tres" id="4_vnbxd"]
-[ext_resource type="Resource" uid="uid://blrwdc3p3833i" path="res://Assets/Audio/Sounds/BugsSound.tres" id="5_un0r2"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/SoundResource/SoundPlayer.gd" id="5_vd3pu"]
-[ext_resource type="Resource" uid="uid://cax8kfs165xn2" path="res://Assets/Audio/Sounds/CoinSound.tres" id="6_c7vv2"]
-[ext_resource type="Resource" uid="uid://qdbm7wbjng2v" path="res://Assets/Audio/Sounds/DashSound.tres" id="7_jjlg7"]
-[ext_resource type="Resource" uid="uid://d4ce2a6f52tgn" path="res://Assets/Audio/Sounds/DeathPlayerSound.tres" id="8_825es"]
-[ext_resource type="Resource" uid="uid://c27w7x24iyply" path="res://Assets/Audio/Sounds/EnemyRewardSound.tres" id="9_jbanb"]
-[ext_resource type="Resource" uid="uid://bh3me3faearwb" path="res://Assets/Audio/Sounds/ExplosionSound.tres" id="10_jh5xx"]
-[ext_resource type="Resource" uid="uid://bexp6axjd40ma" path="res://Assets/Audio/Sounds/JumpSound.tres" id="11_df76x"]
-[ext_resource type="Resource" uid="uid://c3ivt4px00gnq" path="res://Assets/Audio/Sounds/LandSound.tres" id="12_sgch6"]
-[ext_resource type="Resource" uid="uid://c2qli6ucpwm3i" path="res://Assets/Audio/Sounds/EmoteImpact.tres" id="13_kdtur"]
-[ext_resource type="Resource" uid="uid://bnrjpmblt2a6k" path="res://Assets/Audio/Sounds/TeethImpactSound.tres" id="14_fra5g"]
-[ext_resource type="Resource" uid="uid://ccngqs3w7xjrx" path="res://Assets/Audio/Sounds/PunchEnemySound.tres" id="17_2nsm3"]
-[ext_resource type="Resource" uid="uid://c6c6v5cafq882" path="res://Assets/Audio/Sounds/PunchPlayerSound.tres" id="18_pas4s"]
-[ext_resource type="Resource" uid="uid://cb2bg0714gpko" path="res://Assets/Audio/Sounds/TurretShootSound.tres" id="19_kanpl"]
 
-[node name="SoundVolumeAdjuster" type="PanelContainer" node_paths=PackedStringArray("name_label_container", "value_label_container", "slider_container", "save_button", "sound_player")]
+[node name="SoundVolumeAdjuster" type="PanelContainer" node_paths=PackedStringArray("name_label_container", "value_label_container", "slider_container", "save_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ychsr")
-sound_resource_list = Array[Resource("res://Addons/GodotLibrary/Resources/SoundResource/SoundResource.gd")]([ExtResource("2_faqdy"), ExtResource("3_ucp84"), ExtResource("4_vnbxd"), ExtResource("5_un0r2"), ExtResource("6_c7vv2"), ExtResource("7_jjlg7"), ExtResource("8_825es"), ExtResource("9_jbanb"), ExtResource("10_jh5xx"), ExtResource("11_df76x"), ExtResource("12_sgch6"), ExtResource("13_kdtur"), ExtResource("14_fra5g"), ExtResource("17_2nsm3"), ExtResource("18_pas4s"), ExtResource("19_kanpl")])
 name_label_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MainContainer/NameLabelContainer")
 value_label_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MainContainer/ValueLabelContainer")
 slider_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MainContainer/SliderContainer")
 save_button = NodePath("MarginContainer/VBoxContainer/TopButtons/SaveButton")
-sound_player = NodePath("SoundPlayer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -82,6 +63,3 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 text = "SoundName"
-
-[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
-script = ExtResource("5_vd3pu")

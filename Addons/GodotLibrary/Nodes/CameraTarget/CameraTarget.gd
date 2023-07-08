@@ -33,11 +33,11 @@ func _ready()->void:
 	projected_pos = global_position
 	
 	if cameraReference != null:
-		cameraReference.listen(self,check_camera)
+		cameraReference.listen(self, camera_reference_changed)
 	else:
 		set_physics_process(false)
 
-func check_camera()->void:
+func camera_reference_changed()->void:
 	if cameraReference.node == null:
 		set_physics_process(false)
 		return
