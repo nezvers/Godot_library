@@ -37,7 +37,7 @@ func play_sound()->void:
 		sound.play_managed()
 
 ## Called by EffectNode. It's a place to 
-## - Count down a timer for ticks if needed
-## - Interpolate an effect if needed
+## - Count down a timer for ticks
+## - Interpolate values
 func _process(_effect_node:Node, _delta:float)->void:
 	pass
