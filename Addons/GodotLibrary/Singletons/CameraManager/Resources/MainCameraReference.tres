@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="ReferenceNodeResource" load_steps=2 format=3 uid="uid://denx42g6vlhqc"]
+
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/ReferenceNodeResource/ReferenceNodeResource.gd" id="1_urdd0"]
+
+[resource]
+script = ExtResource("1_urdd0")
