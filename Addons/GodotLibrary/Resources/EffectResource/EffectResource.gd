@@ -8,7 +8,6 @@ extends Resource
 @export var tick_time:float = 0.0
 ## Place to fill the description for an effect.
 @export var description:String
-@export var sound:SoundResource
 
 ## Assign EffectNode as target to apply an effect.
 ## - Do checks if needed EffectNode2D or EffectNode3D
@@ -30,11 +29,6 @@ func effect_tick(effect_node:Node)->void:
 	for value_resource in _node.value_resource_list:
 		# Do something with value_resource
 		pass
-	play_sound()
-
-func play_sound()->void:
-	if sound != null:
-		sound.play_managed()
 
 ## Called by EffectNode. It's a place to 
 ## - Count down a timer for ticks

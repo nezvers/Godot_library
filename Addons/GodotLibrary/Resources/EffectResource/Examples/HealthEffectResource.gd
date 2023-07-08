@@ -18,6 +18,5 @@ func effect_tick(effect_node:Node)->void:
 	for value_resource in _node.value_resource_list:
 		if value_resource is HealthValueResource:
 			value_resource.value += value
-			play_sound()
 	
 	tick.emit(effect_node)
