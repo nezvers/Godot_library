@@ -29,7 +29,8 @@ func effect_tick(effect_node:Node)->void:
 	var _node:EffectNode2D = effect_node
 	for value_resource in _node.value_resource_list:
 		# Do something with value_resource
-		play_sound()
+		pass
+	play_sound()
 
 func play_sound()->void:
 	if sound != null:
