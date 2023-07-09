@@ -1,3 +1,3 @@
-SET SHA = xxx
+set "SHA=xxx"
 git checkout %SHA%
 pause

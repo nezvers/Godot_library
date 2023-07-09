@@ -1,3 +1,3 @@
-SET BRANCHNAME = "main"
-git checkout -b %BRANCHNAME%
+set "BRANCHNAME=master"
+git checkout %BRANCHNAME%
 pause
