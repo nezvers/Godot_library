@@ -1,15 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://c2wwc55jf6xup"]
+[gd_scene load_steps=19 format=3 uid="uid://c2wwc55jf6xup"]
 
-[ext_resource type="PackedScene" uid="uid://dgwgk16s7lgte" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/Scenes/base_top_down_2d.tscn" id="1_geisj"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Nodes/Player2DInput.gd" id="2_7ditn"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/TopDown2DInputResource.gd" id="3_6iote"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DStateResource.gd" id="3_kgho0"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DMovementResource.gd" id="4_g71ow"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/Resource/ActionEventResource.gd" id="4_pewmg"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/TopDown2DInputResource.gd" id="1_gpio2"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DStateResource.gd" id="2_ed3am"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DMovementResource.gd" id="3_idt2g"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Nodes/Player2DInput.gd" id="4_e6nv7"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/Resource/ActionEventResource.gd" id="5_8spux"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CameraController/CameraController.gd" id="6_q1e8e"]
+[ext_resource type="Resource" uid="uid://denx42g6vlhqc" path="res://Addons/GodotLibrary/Singletons/CameraManager/Resources/MainCameraReference.tres" id="7_no0xu"]
 
 [sub_resource type="Resource" id="Resource_isl6d"]
 resource_name = "Player input"
-script = ExtResource("3_6iote")
+script = ExtResource("1_gpio2")
 aim_direction = Vector2(0, 0)
 enabled = true
 move_direction = Vector2(0, 0)
@@ -19,14 +20,14 @@ attack = false
 
 [sub_resource type="Resource" id="Resource_xbkoh"]
 resource_name = "Player state"
-script = ExtResource("3_kgho0")
+script = ExtResource("2_ed3am")
 velocity = Vector2(0, 0)
 is_grounded = false
 is_jumping = false
 
 [sub_resource type="Resource" id="Resource_c3lun"]
 resource_name = "Player movement stats"
-script = ExtResource("4_g71ow")
+script = ExtResource("3_idt2g")
 move_speed = 120.0
 acceleration_ground = 5.0
 acceleration_air = 1.0
@@ -45,7 +46,7 @@ keycode = 68
 unicode = 100
 
 [sub_resource type="Resource" id="Resource_4jv4s"]
-script = ExtResource("4_pewmg")
+script = ExtResource("5_8spux")
 action = &"move_right"
 event_array = Array[InputEvent]([SubResource("InputEventKey_q48dq")])
 
@@ -55,7 +56,7 @@ keycode = 65
 unicode = 97
 
 [sub_resource type="Resource" id="Resource_sk173"]
-script = ExtResource("4_pewmg")
+script = ExtResource("5_8spux")
 action = &"move_left"
 event_array = Array[InputEvent]([SubResource("InputEventKey_iub2s")])
 
@@ -65,7 +66,7 @@ keycode = 83
 unicode = 115
 
 [sub_resource type="Resource" id="Resource_2qtg4"]
-script = ExtResource("4_pewmg")
+script = ExtResource("5_8spux")
 action = &"move_down"
 event_array = Array[InputEvent]([SubResource("InputEventKey_eosm3")])
 
@@ -75,19 +76,23 @@ keycode = 87
 unicode = 119
 
 [sub_resource type="Resource" id="Resource_rw6ac"]
-script = ExtResource("4_pewmg")
+script = ExtResource("5_8spux")
 action = &"move_up"
 event_array = Array[InputEvent]([SubResource("InputEventKey_oiejq")])
 
-[node name="PlayerTopDown2D" instance=ExtResource("1_geisj")]
+[node name="PlayerTopDown2D"]
 input_resource = SubResource("Resource_isl6d")
 character_state = SubResource("Resource_xbkoh")
 move_stats = SubResource("Resource_c3lun")
 
 [node name="PlayerInput" type="Node2D" parent="." index="5"]
-script = ExtResource("2_7ditn")
+script = ExtResource("4_e6nv7")
 input_resource = SubResource("Resource_isl6d")
 right = SubResource("Resource_4jv4s")
 left = SubResource("Resource_sk173")
 down = SubResource("Resource_2qtg4")
 up = SubResource("Resource_rw6ac")
+
+[node name="CameraController" type="Node2D" parent="." index="6"]
+script = ExtResource("6_q1e8e")
+camera_reference = ExtResource("7_no0xu")

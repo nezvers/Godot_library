@@ -1,0 +1,131 @@
+[gd_scene load_steps=23 format=3 uid="uid://y84hodm7lwwe"]
+
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/TopDown2DInputResource.gd" id="1_gpio2"]
+[ext_resource type="PackedScene" uid="uid://dgwgk16s7lgte" path="res://GodotLibraryDemo/Scenes/base_top_down_2d.tscn" id="1_wp17i"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DStateResource.gd" id="2_ed3am"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DMovementResource.gd" id="3_idt2g"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Nodes/Player2DInput.gd" id="4_e6nv7"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/Resource/ActionEventResource.gd" id="5_8spux"]
+
+[sub_resource type="Resource" id="Resource_rhbow"]
+resource_name = "Player input"
+script = ExtResource("1_gpio2")
+aim_direction = Vector2(0, 0)
+enabled = true
+move_direction = Vector2(0, 0)
+jump = false
+dash = false
+attack = false
+
+[sub_resource type="Resource" id="Resource_41ft0"]
+resource_name = "Player state"
+script = ExtResource("2_ed3am")
+velocity = Vector2(0, 0)
+is_grounded = false
+is_jumping = false
+
+[sub_resource type="Resource" id="Resource_kp68c"]
+resource_name = "Player movement stats"
+script = ExtResource("3_idt2g")
+move_speed = 120.0
+acceleration_ground = 5.0
+acceleration_air = 1.0
+stopping_ground = 10.0
+stopping_air = 1.0
+dash_speed = 0.0
+dash_cooldown = 0.0
+dash_max_count = 0
+jump_impulse = 0.0
+gravity = 0.0
+fall_limit = 0.0
+
+[sub_resource type="Resource" id="Resource_x6uen"]
+resource_name = "Player input"
+script = ExtResource("1_gpio2")
+aim_direction = Vector2(0, 0)
+enabled = true
+move_direction = Vector2(0, 0)
+jump = false
+dash = false
+attack = false
+
+[sub_resource type="InputEventKey" id="InputEventKey_p773s"]
+resource_name = "D"
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_1hkv1"]
+resource_name = "Right"
+device = -1
+keycode = 4194321
+
+[sub_resource type="Resource" id="Resource_ge346"]
+resource_name = "move_right"
+script = ExtResource("5_8spux")
+action = &"move_right"
+event_array = Array[InputEvent]([SubResource("InputEventKey_p773s"), SubResource("InputEventKey_1hkv1")])
+
+[sub_resource type="InputEventKey" id="InputEventKey_01lfl"]
+resource_name = "A"
+device = -1
+keycode = 65
+unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_vciaw"]
+resource_name = "Left"
+device = -1
+keycode = 4194319
+
+[sub_resource type="Resource" id="Resource_o5qd5"]
+resource_name = "move_left"
+script = ExtResource("5_8spux")
+action = &"move_left"
+event_array = Array[InputEvent]([SubResource("InputEventKey_01lfl"), SubResource("InputEventKey_vciaw")])
+
+[sub_resource type="InputEventKey" id="InputEventKey_jo07p"]
+resource_name = "S"
+device = -1
+keycode = 83
+unicode = 115
+
+[sub_resource type="InputEventKey" id="InputEventKey_5bkls"]
+resource_name = "Down"
+device = -1
+keycode = 4194322
+
+[sub_resource type="Resource" id="Resource_psthv"]
+resource_name = "move_down"
+script = ExtResource("5_8spux")
+action = &"move_down"
+event_array = Array[InputEvent]([SubResource("InputEventKey_jo07p"), SubResource("InputEventKey_5bkls")])
+
+[sub_resource type="InputEventKey" id="InputEventKey_whwld"]
+resource_name = "W"
+device = -1
+keycode = 87
+unicode = 119
+
+[sub_resource type="InputEventKey" id="InputEventKey_odmir"]
+resource_name = "Up"
+device = -1
+keycode = 4194320
+
+[sub_resource type="Resource" id="Resource_x8xj2"]
+resource_name = "move_up"
+script = ExtResource("5_8spux")
+action = &"move_up"
+event_array = Array[InputEvent]([SubResource("InputEventKey_whwld"), SubResource("InputEventKey_odmir")])
+
+[node name="PlayerTopDown2D" instance=ExtResource("1_wp17i")]
+input_resource = SubResource("Resource_rhbow")
+character_state = SubResource("Resource_41ft0")
+move_stats = SubResource("Resource_kp68c")
+
+[node name="PlayerInput" type="Node" parent="." index="4"]
+script = ExtResource("4_e6nv7")
+input_resource = SubResource("Resource_x6uen")
+right = SubResource("Resource_ge346")
+left = SubResource("Resource_o5qd5")
+down = SubResource("Resource_psthv")
+up = SubResource("Resource_x8xj2")

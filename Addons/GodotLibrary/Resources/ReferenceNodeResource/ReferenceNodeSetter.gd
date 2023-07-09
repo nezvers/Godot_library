@@ -1,22 +1,31 @@
+## Node to act as automatic reference assigner for ReferenceNodeResource.
 class_name ReferenceNodeSetter
 extends Node
 
-@export var reference_resource_path:String
+## Node to be assigned to Reference resource
 @export var reference_node:Node
+## Reference resource that will be referencing a Node. If `reference_resource_path` is not empty it will overwrite resource.
+@export var reference_resource:ReferenceNodeResource
+## If not empty it will overwrite resource.
+@export var reference_resource_path:String
+## Initializes only if node is able to process in a tree
 @export var process_only:bool = true
-var reference_resource:ReferenceNodeResource
+
 
 func _ready()->void:
 	if process_only && !can_process():
 		return
-	if reference_resource_path.is_empty():
+	
+	if !reference_resource_path.is_empty():
+		reference_resource = load(reference_resource_path)
 		return
-	var parent: = get_parent()
-	if !parent.is_node_ready():
-		parent.ready.connect(set_reference_node, CONNECT_ONE_SHOT)
+	if reference_resource == null:
+		return
+	
+	if !reference_node.is_node_ready():
+		reference_node.ready.connect(set_reference_node, CONNECT_ONE_SHOT)
 	else:
 		set_reference_node()
 
 func set_reference_node()->void:
-	reference_resource = load(reference_resource_path)
 	reference_resource.add( reference_node )

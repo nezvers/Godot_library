@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ci8525lfjeovj"]
 
-[ext_resource type="PackedScene" uid="uid://dgwgk16s7lgte" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/Scenes/base_top_down_2d.tscn" id="1_h87e5"]
+[ext_resource type="PackedScene" uid="uid://dgwgk16s7lgte" path="res://GodotLibraryDemo/Scenes/base_top_down_2d.tscn" id="1_h87e5"]
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/TopDown2DInputResource.gd" id="2_tun1e"]
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DStateResource.gd" id="3_37x3v"]
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DMovementResource.gd" id="4_6wkak"]

@@ -1,16 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgwgk16s7lgte"]
+[gd_scene load_steps=12 format=3 uid="uid://dgwgk16s7lgte"]
 
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/CharacterTopDown2D.gd" id="1_16hv5"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/TopDown2DInputResource.gd" id="2_3e30o"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DStateResource.gd" id="3_nk40d"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DMovementResource.gd" id="4_g1yap"]
-[ext_resource type="Texture2D" uid="uid://do1ki730wasv0" path="res://Addons/GodotLibrary/Assets/Sprites/Shapes/Circle_16x16.png" id="5_qs0j6"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/EffectResource/EffectNode2D.gd" id="7_chyhb"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CameraTarget/CameraTarget.gd" id="17_ocsmv"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/CharacterTopDown2D.gd" id="1_0jmta"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/TopDown2DInputResource.gd" id="2_73hw8"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DStateResource.gd" id="3_shy6x"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DMovementResource.gd" id="4_ggi8c"]
+[ext_resource type="Texture2D" uid="uid://do1ki730wasv0" path="res://Addons/GodotLibrary/Assets/Sprites/Shapes/Circle_16x16.png" id="5_4462k"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/EffectResource/EffectNode2D.gd" id="6_1dsah"]
 
 [sub_resource type="Resource" id="Resource_alpao"]
 resource_name = "Base input"
-script = ExtResource("2_3e30o")
+script = ExtResource("2_73hw8")
 aim_direction = Vector2(0, 0)
 enabled = true
 move_direction = Vector2(0, 0)
@@ -20,14 +19,14 @@ attack = false
 
 [sub_resource type="Resource" id="Resource_4rxqk"]
 resource_name = "Base state"
-script = ExtResource("3_nk40d")
+script = ExtResource("3_shy6x")
 velocity = Vector2(0, 0)
 is_grounded = false
 is_jumping = false
 
 [sub_resource type="Resource" id="Resource_bodc2"]
 resource_name = "Base movement stats"
-script = ExtResource("4_g1yap")
+script = ExtResource("4_ggi8c")
 move_speed = 120.0
 acceleration_ground = 5.0
 acceleration_air = 1.0
@@ -48,7 +47,7 @@ radius = 5.71429
 
 [node name="BaseTopDown2D" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_16hv5")
+script = ExtResource("1_0jmta")
 input_resource = SubResource("Resource_alpao")
 character_state = SubResource("Resource_4rxqk")
 move_stats = SubResource("Resource_bodc2")
@@ -61,7 +60,7 @@ shape = SubResource("CircleShape2D_i4urg")
 modulate = Color(0, 0, 0, 0.211765)
 position = Vector2(0, 5)
 scale = Vector2(0.9, 0.389)
-texture = ExtResource("5_qs0j6")
+texture = ExtResource("5_4462k")
 
 [node name="SpriteFlip" type="Node2D" parent="."]
 
@@ -75,13 +74,10 @@ offset_right = 4.0
 mouse_filter = 2
 color = Color(0, 0.705882, 1, 1)
 
-[node name="CameraTarget" type="Node2D" parent="."]
-script = ExtResource("17_ocsmv")
-
 [node name="EffectArea2D" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("7_chyhb")
+script = ExtResource("6_1dsah")
 
 [node name="EffectShape2D" type="CollisionShape2D" parent="EffectArea2D"]
 position = Vector2(0, 5)
