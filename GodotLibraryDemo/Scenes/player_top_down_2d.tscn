@@ -1,11 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://y84hodm7lwwe"]
+[gd_scene load_steps=26 format=3 uid="uid://y84hodm7lwwe"]
 
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/TopDown2DInputResource.gd" id="1_gpio2"]
 [ext_resource type="PackedScene" uid="uid://dgwgk16s7lgte" path="res://GodotLibraryDemo/Scenes/base_top_down_2d.tscn" id="1_wp17i"]
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DStateResource.gd" id="2_ed3am"]
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DMovementResource.gd" id="3_idt2g"]
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Nodes/Player2DInput.gd" id="4_e6nv7"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/Resource/ActionEventResource.gd" id="5_8spux"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/ActionEventResource/ActionEventResource.gd" id="5_8spux"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/InputMapResource/InputMapResource.gd" id="6_kvxdq"]
 
 [sub_resource type="Resource" id="Resource_rhbow"]
 resource_name = "Player input"
@@ -32,22 +33,12 @@ acceleration_ground = 5.0
 acceleration_air = 1.0
 stopping_ground = 10.0
 stopping_air = 1.0
-dash_speed = 0.0
-dash_cooldown = 0.0
+dash_speed = 400.0
+dash_cooldown = 0.5
 dash_max_count = 0
 jump_impulse = 0.0
 gravity = 0.0
 fall_limit = 0.0
-
-[sub_resource type="Resource" id="Resource_x6uen"]
-resource_name = "Player input"
-script = ExtResource("1_gpio2")
-aim_direction = Vector2(0, 0)
-enabled = true
-move_direction = Vector2(0, 0)
-jump = false
-dash = false
-attack = false
 
 [sub_resource type="InputEventKey" id="InputEventKey_p773s"]
 resource_name = "D"
@@ -61,7 +52,7 @@ device = -1
 keycode = 4194321
 
 [sub_resource type="Resource" id="Resource_ge346"]
-resource_name = "move_right"
+resource_name = "right"
 script = ExtResource("5_8spux")
 action = &"move_right"
 event_array = Array[InputEvent]([SubResource("InputEventKey_p773s"), SubResource("InputEventKey_1hkv1")])
@@ -78,7 +69,7 @@ device = -1
 keycode = 4194319
 
 [sub_resource type="Resource" id="Resource_o5qd5"]
-resource_name = "move_left"
+resource_name = "left"
 script = ExtResource("5_8spux")
 action = &"move_left"
 event_array = Array[InputEvent]([SubResource("InputEventKey_01lfl"), SubResource("InputEventKey_vciaw")])
@@ -95,7 +86,7 @@ device = -1
 keycode = 4194322
 
 [sub_resource type="Resource" id="Resource_psthv"]
-resource_name = "move_down"
+resource_name = "down"
 script = ExtResource("5_8spux")
 action = &"move_down"
 event_array = Array[InputEvent]([SubResource("InputEventKey_jo07p"), SubResource("InputEventKey_5bkls")])
@@ -112,10 +103,25 @@ device = -1
 keycode = 4194320
 
 [sub_resource type="Resource" id="Resource_x8xj2"]
-resource_name = "move_up"
+resource_name = "up"
 script = ExtResource("5_8spux")
 action = &"move_up"
 event_array = Array[InputEvent]([SubResource("InputEventKey_whwld"), SubResource("InputEventKey_odmir")])
+
+[sub_resource type="InputEventKey" id="InputEventKey_e8gyt"]
+resource_name = "Shift"
+device = -1
+keycode = 4194325
+
+[sub_resource type="Resource" id="Resource_f0rao"]
+resource_name = "dash"
+script = ExtResource("5_8spux")
+action = &"dash"
+event_array = Array[InputEvent]([SubResource("InputEventKey_e8gyt")])
+
+[sub_resource type="Resource" id="Resource_wb6i0"]
+script = ExtResource("6_kvxdq")
+action_resource_list = Array[ExtResource("5_8spux")]([SubResource("Resource_ge346"), SubResource("Resource_o5qd5"), SubResource("Resource_psthv"), SubResource("Resource_x8xj2"), SubResource("Resource_f0rao")])
 
 [node name="PlayerTopDown2D" instance=ExtResource("1_wp17i")]
 input_resource = SubResource("Resource_rhbow")
@@ -124,8 +130,10 @@ move_stats = SubResource("Resource_kp68c")
 
 [node name="PlayerInput" type="Node" parent="." index="4"]
 script = ExtResource("4_e6nv7")
-input_resource = SubResource("Resource_x6uen")
-right = SubResource("Resource_ge346")
-left = SubResource("Resource_o5qd5")
-down = SubResource("Resource_psthv")
-up = SubResource("Resource_x8xj2")
+input_resource = SubResource("Resource_rhbow")
+input_map_resource = SubResource("Resource_wb6i0")
+right = &"move_right"
+left = &"move_left"
+down = &"move_down"
+up = &"move_up"
+dash = &"dash"
