@@ -1,4 +1,4 @@
-## Class for low level thigs
+## Class for low level things
 ## references:
 ## - https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/
 class_name RetroMath
