@@ -4,8 +4,6 @@ extends Resource
 
 ## Reference to the same tween in case one is already playing.
 @export var tween_value_resource:TweenValueResource
-## Reference to camera that needs to be shaked
-@export var camera_reference:ReferenceNodeResource
 ## Tween duration
 @export var tween_duration:float = 0.5
 ## Curve for frequency change over shake's lifetime
@@ -21,7 +19,7 @@ var direction:Vector2
 
 ## Plays screen shake on camera assigned to reference resource.
 func play()->void:
-	var camera:Camera2D = camera_reference.node
+	var camera:Camera2D = CameraManager.get_current_camera()
 	if camera == null:
 		return
 	
@@ -34,11 +32,10 @@ func play()->void:
 		tween.kill()
 	
 	tween = camera.create_tween().bind_node(camera)
-	tween.tween_method(sample, 0.0, 1.0, tween_duration)
+	tween.tween_method(sample.bind(camera), 0.0, 1.0, tween_duration)
 
 ## Samples screen shake offset from frequency and amplitude curves.
-func sample(t:float)->void:
-	var camera:Camera2D = camera_reference.node
+func sample(t:float, camera:Camera2D)->void:
 	if camera == null:
 		return
 #	assert(t >= 0.0 && t <= 1.0, "Sampling argument is out of range")
