@@ -10,3 +10,6 @@ pitch_max = 1.2
 volume = 0.0
 sound = ExtResource("2_fq1qo")
 retrigger_time = 0.032
+pitch_cooldown = 0.0
+pitch_return = 0.0
+pitch_add = 0.0
