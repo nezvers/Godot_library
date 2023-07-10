@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d7adgymcu5ry"]
+
+[ext_resource type="PackedScene" uid="uid://y84hodm7lwwe" path="res://GodotLibraryDemo/Scenes/player_top_down_2d.tscn" id="1_33mvn"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/ReferenceNodeResource/ReferenceNodeSetter.gd" id="2_1b71o"]
+[ext_resource type="Resource" uid="uid://cxjhisxftllxo" path="res://Addons/GodotLibrary/Singletons/CameraManager/Resource/MainCameraReference.tres" id="3_lkinn"]
+[ext_resource type="PackedScene" uid="uid://ci8525lfjeovj" path="res://GodotLibraryDemo/Scenes/npc_top_down_2d.tscn" id="4_yntem"]
+
+[node name="TopDownTest0" type="Node2D"]
+
+[node name="MainCamera" type="Camera2D" parent="."]
+position = Vector2(241, 135)
+
+[node name="ReferenceNodeSetter" type="Node" parent="MainCamera" node_paths=PackedStringArray("reference_node")]
+script = ExtResource("2_1b71o")
+reference_node = NodePath("..")
+reference_resource = ExtResource("3_lkinn")
+
+[node name="PlayerTopDown2D" parent="." instance=ExtResource("1_33mvn")]
+position = Vector2(232, 147)
+
+[node name="NpcTopDown2D" parent="." instance=ExtResource("4_yntem")]
+position = Vector2(159, 108)

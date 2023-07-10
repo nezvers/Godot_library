@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Godot Library"
 config/description="Library of Godot templates"
-run/main_scene="res://GodotLibraryDemo/Scenes/player_top_down_2d.tscn"
+run/main_scene="res://GodotLibraryDemo/Rooms/top_down_test_0.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 
 SoundManager="*res://Addons/GodotLibrary/Singletons/SoundManager/Scenes/SoundManager.tscn"
 CameraManager="*res://Addons/GodotLibrary/Singletons/CameraManager/Scenes/CameraManager.tscn"
-ScreenEffect="*res://Addons/GodotLibrary/Singletons/ScreenEffect/ScreenEffect.gd"
+ScreenEffect="*res://Addons/GodotLibrary/Singletons/ScreenEffect/Scenes/ScreenEffect.tscn"
 
 [display]
 
