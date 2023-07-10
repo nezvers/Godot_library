@@ -27,4 +27,6 @@ enum CharacterStates{
 	HANGING			= 1 << 15,
 	LADDER			= 1 << 16, # combine with moving
 	LEDGE			= 1 << 17, # Like standing on a ledge
+	TURNING			= 1 << 18,
+	DYING			= 1 << 19,
 }
