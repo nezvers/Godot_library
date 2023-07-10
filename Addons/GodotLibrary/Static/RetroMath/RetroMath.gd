@@ -38,5 +38,6 @@ static func bitwise_find_odd(value_list:Array[int])->int:
 		result ^= value
 	return result
 
-static func bitwise_is_dividable_pow2(a:int, b:int)->bool:
+## Is divisible by pow(2, b)
+static func bitwise_is_divisible_pow2(a:int, b:int)->bool:
 	return (a & ((1 << b) - 1)) == 0
