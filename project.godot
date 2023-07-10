@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 SoundManager="*res://Addons/GodotLibrary/Singletons/SoundManager/Scenes/SoundManager.tscn"
 CameraManager="*res://Addons/GodotLibrary/Singletons/CameraManager/Scenes/CameraManager.tscn"
+ScreenEffect="*res://Addons/GodotLibrary/Singletons/ScreenEffect/ScreenEffect.gd"
 
 [display]
 
