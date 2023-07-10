@@ -1,6 +1,7 @@
 extends Node
 class_name GameMath
 
+## Project hit position for a moving target.
 static func get_hit_position_2D(from_pos:Vector2, to_pos:Vector2, t_velocity:Vector2, projectile_speed:float)->Vector2:
 	var q: = to_pos - from_pos
 	q.y = 0.0
@@ -38,7 +39,7 @@ static func dist_to_line_3d(pos:Vector3, line_start:Vector3, line_end:Vector3)->
 	return ab.cross(ac).length() / ab.length()
 
 
-## Outline the formula
+## Outline of the formula
 static func dampened_spring(displacement, damp, velocity, spring:float, delta:float):
 	var force = -spring * displacement - damp * velocity
 	velocity += force * delta
