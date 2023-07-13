@@ -1,6 +1,8 @@
-extends Resource
+## Resource to save reference to a list of file paths.
 class_name AssetResource
+extends Resource
 
+## Enum for deciding what to do when saving a resource with already existing file path.
 enum PathMode{
 	WAIT,
 	OVERWRITE,
@@ -8,25 +10,39 @@ enum PathMode{
 	CANCEL,
 }
 
+## Notify when state has been changed
 signal updated
+## Failed save message
 signal failed(error:String)
+## Emitted when saving an asset with WAIT mode and encountering already existing file.
+## Requires emitting path_process_choice with further PathMode choice
 signal filename_exists # awaits path processing
+## Required for external emitting when encountered already existing file.
 signal path_process_choice(value:PathMode)
 
+## List with file paths
 @export var list:Array[String]
+## Optional variable to assign one key to act as selected entry.
 @export var selected:String : set = set_selected
+## File path for saving AssetResource state. If empty the resource_path will be used.
 @export var file_path:String
+## Directory where save_asset function will save new assets.
 @export var asset_dir:String
+## Extension for saved asset files.
 @export var asset_extension:String
 
+## Cached file pathes and uses file name (without extension) as a key
 var dictionary:Dictionary
+## Is set to TRUE when resource has updated dictionary at least once.
 var is_initialized: = false
 
+## Assign one of entries as selected for a use case.
 func set_selected(value:String)->void:
 	if selected == value:
 		return
 	selected = value
 
+## Using a key it loads in the referenced asset and returns it.
 func get_asset(key:String)->Resource:
 	if !dictionary.has(key):
 		return null
@@ -39,6 +55,7 @@ func get_asset(key:String)->Resource:
 		print("AssetResource: failed load: ", path)
 	return asset
 
+## Initializes data entry. Populates dictionary.
 func initialize(force:bool = false)->void:
 	if is_initialized && !force:
 		return
@@ -48,6 +65,7 @@ func initialize(force:bool = false)->void:
 		dictionary[key] = path
 	is_initialized = true
 
+## Seves the state of the Resource
 func save_resource()->void:
 	if resource_path.is_empty():
 		return
@@ -57,6 +75,7 @@ func save_resource()->void:
 		DirAccess.make_dir_recursive_absolute(file_path.get_base_dir())
 		ResourceSaver.save(self, file_path)
 
+## Loads saved state. `force` will force to load the state even if it has been loaded before.
 func load_resource(force:bool = false)->void:
 	if is_initialized && !force:
 		return
@@ -69,6 +88,7 @@ func load_resource(force:bool = false)->void:
 		list = data.list
 	initialize(force)
 
+## Adds asset file entry to AssetResource
 func add_asset(value:String)->void:
 	var key:String = value.get_file().get_basename()
 	if dictionary.has(key):
@@ -78,6 +98,7 @@ func add_asset(value:String)->void:
 	save_resource()
 	updated.emit()
 
+## Deletes reference asset file and remove the reference entry from AssetResource
 func delete_asset(key:String)->void:
 	if !dictionary.has(key):
 		return
@@ -88,6 +109,7 @@ func delete_asset(key:String)->void:
 	save_resource()
 	updated.emit()
 
+## Deletes referenced files and clears list and dictionary
 func clear_assets()->void:
 	for key in dictionary.keys():
 		var file_name:String = dictionary[key]
@@ -129,7 +151,7 @@ func process_path(asset_name:String, mode:PathMode)->String:
 		mode = await path_process_choice
 	
 	if mode == PathMode.CANCEL:
-		failed.emit("Path already exists")
+		failed.emit("Path already exists. CANCEL mode")
 		return ""
 	elif mode == PathMode.OVERWRITE:
 		return path

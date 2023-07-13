@@ -1,21 +1,27 @@
-extends Resource
+## Resource to reference the same Node and receive notification when the reference is changed.
 class_name ReferenceNodeResource
+extends Resource
 
+## Notification signal when reference has been changed
 signal updated
 
+## Referenced node shared between resource holders
 var node:Node
+
+## Callback list for change listeners
 var listeners:Array[Callable]
 
-func add(value:Node)->void:
+## Sets referenced node
+func set_reference(value:Node)->void:
 	node = value
 	updated.emit()
 	for callback in listeners:
 		callback.call()
 	if value == null:
 		return
-	value.tree_exited.connect(remove.bind(node), CONNECT_ONE_SHOT)
+	value.tree_exited.connect(remove_reference.bind(node), CONNECT_ONE_SHOT)
 
-func remove(value:Node)->void:
+func remove_reference(value:Node)->void:
 	if node != value:
 		return
 	node = null

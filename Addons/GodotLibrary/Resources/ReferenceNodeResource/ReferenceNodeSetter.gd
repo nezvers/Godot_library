@@ -28,4 +28,4 @@ func _ready()->void:
 		set_reference_node()
 
 func set_reference_node()->void:
-	reference_resource.add( reference_node )
+	reference_resource.set_reference( reference_node )
