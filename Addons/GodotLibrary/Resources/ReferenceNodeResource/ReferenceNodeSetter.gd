@@ -11,14 +11,13 @@ extends Node
 ## Initializes only if node is able to process in a tree
 @export var process_only:bool = true
 
-
 func _ready()->void:
 	if process_only && !can_process():
 		return
 	
 	if !reference_resource_path.is_empty():
 		reference_resource = load(reference_resource_path)
-		return
+	
 	if reference_resource == null:
 		return
 	
