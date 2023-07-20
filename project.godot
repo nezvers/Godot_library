@@ -18,9 +18,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+SaveManager="*res://Addons/GodotLibrary/Singletons/SaveManager/Scenes/SaveManager.tscn"
+SceneManager="*res://Addons/GodotLibrary/Singletons/SceneManager/Scenes/SceneManager.tscn"
 SoundManager="*res://Addons/GodotLibrary/Singletons/SoundManager/Scenes/SoundManager.tscn"
-CameraManager="*res://Addons/GodotLibrary/Singletons/CameraManager/Scenes/CameraManager.tscn"
 ScreenEffect="*res://Addons/GodotLibrary/Singletons/ScreenEffect/Scenes/ScreenEffect.tscn"
+CameraManager="*res://Addons/GodotLibrary/Singletons/CameraManager/Scenes/CameraManager.tscn"
 
 [display]
 

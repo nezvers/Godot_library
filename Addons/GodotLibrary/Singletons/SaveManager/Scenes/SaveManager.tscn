@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://va7mo7ehnnrg"]
+
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Singletons/SaveManager/SaveManager.gd" id="1_a545a"]
+
+[node name="SaveManager" type="Node"]
+script = ExtResource("1_a545a")
