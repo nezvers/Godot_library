@@ -2,9 +2,8 @@ class_name CameraBoundsModResource
 extends CameraModResource
 
 @export var rect:Rect2
-@export var debug_color:Color = Color.WHITE
 
-func update(target_position:Vector2, projected_position:Vector2, _delta:float)->Vector2:
+func update(camera_controller:CameraController, target_position:Vector2, projected_position:Vector2, _delta:float)->Vector2:
 	if projected_position.x < target_position.x + rect.position.x:
 		projected_position.x = target_position.x + rect.position.x
 	elif projected_position.x > target_position.x + rect.position.x + rect.size.x:

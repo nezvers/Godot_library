@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://y84hodm7lwwe"]
+[gd_scene load_steps=34 format=3 uid="uid://y84hodm7lwwe"]
 
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/TopDown2DInputResource.gd" id="1_gpio2"]
 [ext_resource type="PackedScene" uid="uid://dgwgk16s7lgte" path="res://GodotLibraryDemo/Scenes/base_top_down_2d.tscn" id="1_wp17i"]
@@ -9,7 +9,9 @@
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/InputMapResource/InputMapResource.gd" id="6_kvxdq"]
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CameraController/CameraController.gd" id="8_7tkug"]
 [ext_resource type="Resource" uid="uid://cxjhisxftllxo" path="res://Addons/GodotLibrary/Singletons/CameraManager/Resource/MainCameraReference.tres" id="9_wg1c1"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CameraController/Resource/CameraLerpModResource.gd" id="10_a5nmn"]
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CameraController/Resource/CameraBoundsModResource.gd" id="10_olb1n"]
+[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CameraController/Resource/CameraMouseModResource.gd" id="12_esh2y"]
 
 [sub_resource type="Resource" id="Resource_rhbow"]
 resource_name = "Player input"
@@ -126,6 +128,16 @@ event_array = Array[InputEvent]([SubResource("InputEventKey_e8gyt")])
 script = ExtResource("6_kvxdq")
 action_resource_list = Array[ExtResource("5_8spux")]([SubResource("Resource_ge346"), SubResource("Resource_o5qd5"), SubResource("Resource_psthv"), SubResource("Resource_x8xj2"), SubResource("Resource_f0rao")])
 
+[sub_resource type="Resource" id="Resource_5hp72"]
+script = ExtResource("12_esh2y")
+lerp_strength = 0.15
+debug_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_epd5w"]
+script = ExtResource("10_a5nmn")
+lerp_strength = 1.0
+debug_color = Color(1, 1, 1, 1)
+
 [sub_resource type="Resource" id="Resource_s61we"]
 resource_name = "Camera bounds"
 script = ExtResource("10_olb1n")
@@ -150,5 +162,5 @@ dash = &"dash"
 [node name="CameraController" type="Marker2D" parent="." index="5"]
 script = ExtResource("8_7tkug")
 camera_reference = ExtResource("9_wg1c1")
-mod_list = Array[Resource("res://Addons/GodotLibrary/Nodes/CameraController/Resource/CameraModResource.gd")]([SubResource("Resource_s61we")])
+mod_list = Array[Resource("res://Addons/GodotLibrary/Nodes/CameraController/Resource/CameraModResource.gd")]([SubResource("Resource_5hp72"), SubResource("Resource_epd5w"), SubResource("Resource_s61we")])
 debug = true

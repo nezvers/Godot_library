@@ -16,12 +16,15 @@ func camera_changed()->void:
 	if camera_reference.node != null:
 		projected_position = camera_reference.node.global_position
 	set_process(camera_reference.node != null)
+	set_physics_process(camera_reference.node != null)
 
-func _process(delta:float)->void:
+func _physics_process(delta:float)->void:
 	var new_projection: = projected_position
 	for camera_mod in mod_list:
-		new_projection = camera_mod.update(global_position, new_projection, delta)
+		new_projection = camera_mod.update(self, global_position, new_projection, delta)
 	projected_position = new_projection
+
+func _process(delta:float)->void:
 	camera_reference.node.global_position = projected_position.round()
 	
 	if debug:
