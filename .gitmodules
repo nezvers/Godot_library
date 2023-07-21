@@ -1,0 +1,3 @@
+[submodule "Addons/panku_console"]
+	path = Addons/panku_console
+	url = https://github.com/Ark2000/panku_console
