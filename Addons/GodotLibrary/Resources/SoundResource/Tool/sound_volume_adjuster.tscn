@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://br3w38jrt3feh"]
+[gd_scene load_steps=3 format=3 uid="uid://br3w38jrt3feh"]
 
 [ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/SoundResource/Tool/sound_volume_adjuster.gd" id="1_ychsr"]
+[ext_resource type="Resource" uid="uid://dfnquyo1lwbuw" path="res://Addons/GodotLibrary/Assets/Sounds/Shoot.tres" id="2_vrjg2"]
 
 [node name="SoundVolumeAdjuster" type="PanelContainer" node_paths=PackedStringArray("name_label_container", "value_label_container", "slider_container", "save_button")]
 anchors_preset = 15
@@ -9,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ychsr")
+sound_resource_list = Array[Resource("res://Addons/GodotLibrary/Resources/SoundResource/SoundResource.gd")]([ExtResource("2_vrjg2")])
 name_label_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MainContainer/NameLabelContainer")
 value_label_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MainContainer/ValueLabelContainer")
 slider_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MainContainer/SliderContainer")

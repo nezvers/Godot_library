@@ -45,3 +45,24 @@ static func dampened_spring(displacement, damp, velocity, spring:float, delta:fl
 	velocity += force * delta
 	displacement += velocity * delta
 	return displacement
+
+static func inverse_lerp(a:float, b:float, v:float)->float:
+	return (v - a) / (b - a)
+
+static func remap(imin:float, imax:float, omin:float, omax:float, v:float)->float:
+	var t: = inverse_lerp(imin, imax, v)
+	return lerp(omin, omax, t)
+
+static func log_base(t:float, base:float)->float:
+	return log(t) / log(base)
+
+# convert values 0.0 to 1.0
+static func convert_to_log(t:float, base:float)->float:
+	return (pow(2.0, base * t) - 1.0) / (pow(2.0, base) - 1.0)
+
+static func lerp_log(a:float, b:float, t:float, base:float)->float:
+	return lerp(a, b, convert_to_log(t, base))
+
+static func convert_from_log(t:float, base:float)->float:
+	var v:float = t/1.0 * (pow(2, base) -1) + 1
+	return log_base(v, 2) / base

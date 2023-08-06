@@ -14,6 +14,8 @@ enum PathMode{
 signal updated
 ## Failed save message
 signal failed(error:String)
+## Emited when an asset is saved
+signal asset_saved
 ## Emitted when saving an asset with WAIT mode and encountering already existing file.
 ## Requires emitting path_process_choice with further PathMode choice
 signal filename_exists # awaits path processing
@@ -35,6 +37,10 @@ signal path_process_choice(value:PathMode)
 var dictionary:Dictionary
 ## Is set to TRUE when resource has updated dictionary at least once.
 var is_initialized: = false
+
+func keys()->Array:
+	load_resource()
+	return dictionary.keys()
 
 ## Assign one of entries as selected for a use case.
 func set_selected(value:String)->void:
@@ -139,6 +145,7 @@ func save_asset(asset:Resource, asset_name:String, mode:PathMode = PathMode.INDE
 		failed.emit("failed saving: " + path)
 		return
 	add_asset(asset.resource_path)
+	asset_saved.emit(asset_name)
 
 func process_path(asset_name:String, mode:PathMode)->String:
 	#asset_name = asset_name.to_lower()
