@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://j0ukak5b2nha"
-path="res://.godot/imported/JetBrainsMono[wght].ttf-65d270a01e01ce52e291970544430bdb.fontdata"
+uid="uid://cbv7egfp1gr1g"
+path="res://.godot/imported/CascadiaMono.ttf-da54c54843acd6ee25b8b4c053328d5c.fontdata"
 
 [deps]
 
-source_file="res://Addons/GodotLibrary/Assets/Fonts/Coding/JetbrainsMono/JetBrainsMono[wght].ttf"
-dest_files=["res://.godot/imported/JetBrainsMono[wght].ttf-65d270a01e01ce52e291970544430bdb.fontdata"]
+source_file="res://Addons/GodotLibrary/Assets/Fonts/Coding/CascadiaMono/CascadiaMono.ttf"
+dest_files=["res://.godot/imported/CascadiaMono.ttf-da54c54843acd6ee25b8b4c053328d5c.fontdata"]
 
 [params]
 

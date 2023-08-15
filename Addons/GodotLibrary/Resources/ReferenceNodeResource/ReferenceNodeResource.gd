@@ -11,15 +11,19 @@ var node:Node
 ## Callback list for change listeners
 var listeners:Array[Callable]
 
+
 ## Sets referenced node
-func set_reference(value:Node)->void:
+func set_reference(value:Node, until_exit:bool = true)->void:
 	node = value
 	updated.emit()
 	for callback in listeners:
 		callback.call()
 	if value == null:
 		return
+	if !until_exit:
+		return
 	value.tree_exited.connect(remove_reference.bind(node), CONNECT_ONE_SHOT)
+
 
 func remove_reference(value:Node)->void:
 	if node != value:
@@ -29,9 +33,11 @@ func remove_reference(value:Node)->void:
 	for callback in listeners:
 		callback.call()
 
-func listen(inst:Node, callback:Callable)->void:
+func listen(inst:Node, callback:Callable, until_exit:bool = true)->void:
 	listeners.append(callback)
 	callback.call()
+	if !until_exit:
+		return
 	inst.tree_exited.connect(erase_listener.bind(callback), CONNECT_ONE_SHOT)
 
 func erase_listener(callback:Callable)->void:
