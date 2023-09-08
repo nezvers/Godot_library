@@ -1,5 +1,5 @@
 class_name ValueResource
-extends Resource
+extends SaveableResource
 
 signal updated
 

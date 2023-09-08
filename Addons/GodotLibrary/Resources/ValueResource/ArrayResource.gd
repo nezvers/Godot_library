@@ -1,12 +1,14 @@
-class_name DictionaryResource
-extends ValueResource
+class_name ArrayResource
+extends Resource
 
-@export var value:Dictionary : set = set_value
-@export var default_value:Dictionary
+signal update
 
-func set_value(_value:Dictionary)->void:
-	value = _value
-	updated.emit()
+@export var value:Array
+@export var default_value:Array
+
+func append(entry)->void:
+	value.append(entry)
+	update.emit()
 
 ## Override function for resetting to default values
 func reset_resource()->void:

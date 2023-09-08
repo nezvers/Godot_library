@@ -1,10 +1,10 @@
-class_name DictionaryResource
+class_name StringResource
 extends ValueResource
 
-@export var value:Dictionary : set = set_value
-@export var default_value:Dictionary
+@export var value:String : set = set_value
+@export var default_value:String
 
-func set_value(_value:Dictionary)->void:
+func set_value(_value:String)->void:
 	value = _value
 	updated.emit()
 
