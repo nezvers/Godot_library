@@ -66,3 +66,22 @@ static func lerp_log(a:float, b:float, t:float, base:float)->float:
 static func convert_from_log(t:float, base:float)->float:
 	var v:float = t/1.0 * (pow(2, base) -1) + 1
 	return log_base(v, 2) / base
+
+static func packed_vector2_length(array:PackedVector2Array)->float:
+	var point_count:int = array.size()
+	if point_count < 2:
+		return 0.0
+	var total_length:float = 0.0
+	for i in point_count -1:
+		total_length += (array[i] - array[i+1]).length()
+	return total_length
+
+static func packed_float32_total(array:PackedFloat32Array)->float:
+	var total:float = 0.0
+	for value in array:
+		total += value
+	return total
+
+## Get random values from a bell curve
+static func random_standard_deviation(mean:float, deviation:float)->float:
+	return deviation * -0.6266570687 * log((2147483647 * randf())) + mean;
