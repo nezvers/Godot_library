@@ -168,3 +168,31 @@ static func fabrik_3d_constrained(length_list:PackedFloat32Array, point_list:Pac
 		if tip_distance <= error_margin:
 			break
 	return point_list
+
+## Rope like following/pulling
+## Provide array with limb length and point array that holds position state (has to be one element bigger size)
+static func rope_2d(length_list:PackedFloat32Array, point_list:PackedVector2Array, to:Vector2)->PackedVector2Array:
+	var joint_count: = length_list.size()
+	
+	point_list[0] = to
+	for i in joint_count:
+		var p1: = point_list[i]
+		var p2: = point_list[i + 1]
+		var dir: = (p2 - p1).normalized()
+		point_list[i + 1] = point_list[i] + length_list[i] * dir
+	
+	return point_list
+
+## Rope like following/pulling
+## Provide array with limb length and point array that holds position state (has to be one element bigger size)
+static func rope_3d(length_list:PackedFloat32Array, point_list:PackedVector3Array, to:Vector3)->PackedVector3Array:
+	var joint_count: = length_list.size()
+	
+	point_list[0] = to
+	for i in joint_count:
+		var p1: = point_list[i]
+		var p2: = point_list[i + 1]
+		var dir: = (p2 - p1).normalized()
+		point_list[i + 1] = point_list[i] + length_list[i] * dir
+	
+	return point_list
