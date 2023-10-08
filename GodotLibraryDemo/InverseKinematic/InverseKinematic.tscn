@@ -20,9 +20,9 @@ func _process(_delta:float)->void:
 		from = to
 	if mouse_flags & MOUSE_BUTTON_MASK_RIGHT > 0:
 		constain = to
-#	points_array = InverseKinematics.fabrik_2d(length_array, points_array, from, to)
-#	points_array = InverseKinematics.fabrik_2d_constrained(length_array, points_array, constain, from, to)
-	points_array = InverseKinematics.rope_2d(length_array, points_array, to)
+#	InverseKinematics.fabrik_2d(length_array, points_array, from, to)
+	InverseKinematics.fabrik_2d_constrained(length_array, points_array, constain, from, to)
+#	InverseKinematics.rope_2d(length_array, points_array, to)
 	queue_redraw()
 
 func _draw()->void:

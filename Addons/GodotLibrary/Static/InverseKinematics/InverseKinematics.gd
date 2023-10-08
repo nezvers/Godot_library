@@ -3,7 +3,7 @@ extends Node
 
 ## Forward And  Backwards Reach Inverse Kinematics
 ## Provide array with limb length and point array that holds position state (has to be one element bigger size)
-static func fabrik_2d(length_list:PackedFloat32Array, point_list:PackedVector2Array, from:Vector2, to:Vector2, itterations:int = 10, error_margin:float = 0.1)->PackedVector2Array:
+static func fabrik_2d(length_list:PackedFloat32Array, point_list:PackedVector2Array, from:Vector2, to:Vector2, itterations:int = 10, error_margin:float = 0.1)->void:
 	var joint_count: = length_list.size()
 	
 #	var total_length: = GameMath.packed_float32_total(length_list)
@@ -38,11 +38,10 @@ static func fabrik_2d(length_list:PackedFloat32Array, point_list:PackedVector2Ar
 		var tip_distance:float = (to -point_list[last_i]).length()
 		if tip_distance <= error_margin:
 			break
-	return point_list
 
 ## FABRIK with constrain (point joints to a direction)
 ## Provide array with limb length and point array that holds position state (has to be one element bigger size)
-static func fabrik_2d_constrained(length_list:PackedFloat32Array, point_list:PackedVector2Array, constrain:Vector2, from:Vector2, to:Vector2, itterations:int = 10, error_margin:float = 0.1)->PackedVector2Array:
+static func fabrik_2d_constrained(length_list:PackedFloat32Array, point_list:PackedVector2Array, constrain:Vector2, from:Vector2, to:Vector2, itterations:int = 10, error_margin:float = 0.1)->void:
 	var joint_count: = length_list.size()
 	
 #	var total_length: = GameMath.packed_float32_total(length_list)
@@ -82,13 +81,11 @@ static func fabrik_2d_constrained(length_list:PackedFloat32Array, point_list:Pac
 		var tip_distance:float = (to -point_list[last_i]).length()
 		if tip_distance <= error_margin:
 			break
-	return point_list
-
 
 
 ## Forward And  Backwards Reach Inverse Kinematics
 ## Provide array with limb length and point array that holds position state (has to be one element bigger size)
-static func fabrik_3d(length_list:PackedFloat32Array, point_list:PackedVector3Array, from:Vector3, to:Vector3, itterations:int = 10, error_margin:float = 0.1)->PackedVector3Array:
+static func fabrik_3d(length_list:PackedFloat32Array, point_list:PackedVector3Array, from:Vector3, to:Vector3, itterations:int = 10, error_margin:float = 0.1)->void:
 	var joint_count: = length_list.size()
 	
 #	var total_length: = GameMath.packed_float32_total(length_list)
@@ -123,11 +120,10 @@ static func fabrik_3d(length_list:PackedFloat32Array, point_list:PackedVector3Ar
 		var tip_distance:float = (to -point_list[last_i]).length()
 		if tip_distance <= error_margin:
 			break
-	return point_list
 
 ## FABRIK with constrain (point joints to a direction)
 ## Provide array with limb length and point array that holds position state (has to be one element bigger size)
-static func fabrik_3d_constrained(length_list:PackedFloat32Array, point_list:PackedVector3Array, constrain:Vector3, from:Vector3, to:Vector3, itterations:int = 10, error_margin:float = 0.1)->PackedVector3Array:
+static func fabrik_3d_constrained(length_list:PackedFloat32Array, point_list:PackedVector3Array, constrain:Vector3, from:Vector3, to:Vector3, itterations:int = 10, error_margin:float = 0.1)->void:
 	var joint_count: = length_list.size()
 	
 #	var total_length: = GameMath.packed_float32_total(length_list)
@@ -167,11 +163,10 @@ static func fabrik_3d_constrained(length_list:PackedFloat32Array, point_list:Pac
 		var tip_distance:float = (to -point_list[last_i]).length()
 		if tip_distance <= error_margin:
 			break
-	return point_list
 
 ## Rope like following/pulling
 ## Provide array with limb length and point array that holds position state (has to be one element bigger size)
-static func rope_2d(length_list:PackedFloat32Array, point_list:PackedVector2Array, to:Vector2)->PackedVector2Array:
+static func rope_2d(length_list:PackedFloat32Array, point_list:PackedVector2Array, to:Vector2)->void:
 	var joint_count: = length_list.size()
 	
 	point_list[0] = to
@@ -180,12 +175,11 @@ static func rope_2d(length_list:PackedFloat32Array, point_list:PackedVector2Arra
 		var p2: = point_list[i + 1]
 		var dir: = (p2 - p1).normalized()
 		point_list[i + 1] = point_list[i] + length_list[i] * dir
-	
-	return point_list
+
 
 ## Rope like following/pulling
 ## Provide array with limb length and point array that holds position state (has to be one element bigger size)
-static func rope_3d(length_list:PackedFloat32Array, point_list:PackedVector3Array, to:Vector3)->PackedVector3Array:
+static func rope_3d(length_list:PackedFloat32Array, point_list:PackedVector3Array, to:Vector3)->void:
 	var joint_count: = length_list.size()
 	
 	point_list[0] = to
@@ -194,5 +188,3 @@ static func rope_3d(length_list:PackedFloat32Array, point_list:PackedVector3Arra
 		var p2: = point_list[i + 1]
 		var dir: = (p2 - p1).normalized()
 		point_list[i + 1] = point_list[i] + length_list[i] * dir
-	
-	return point_list
