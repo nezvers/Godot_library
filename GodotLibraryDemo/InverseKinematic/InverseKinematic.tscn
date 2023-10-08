@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmaad8vgvyamg"]
+
+[sub_resource type="GDScript" id="GDScript_vmvhm"]
+script/source = "extends Node2D
+
+## Limg length array
+var length_array: = PackedFloat32Array([5., 4., 6., 3., 6., 4.])
+## Need to be one element more
+var points_array: = PackedVector2Array([Vector2.ZERO,Vector2.ZERO,Vector2.ZERO,Vector2.ZERO,Vector2.ZERO,Vector2.ZERO,Vector2.ZERO,])
+
+var from: = Vector2(100,100)
+var to: = Vector2(100,100)
+var constain: = Vector2(200,100)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta:float)->void:
+	to = get_local_mouse_position()
+	var mouse_flags:int = Input.get_mouse_button_mask()
+	if mouse_flags & MOUSE_BUTTON_MASK_LEFT > 0:
+		from = to
+	if mouse_flags & MOUSE_BUTTON_MASK_RIGHT > 0:
+		constain = to
+#	points_array = InverseKinematics.fabrik_2d(length_array, points_array, from, to)
+	points_array = InverseKinematics.fabrik_2d_constrained(length_array, points_array, constain, from, to)
+	queue_redraw()
+
+func _draw()->void:
+	draw_polyline(points_array, Color.WHITE)
+"
+
+[node name="InverseKinematic" type="Node2D"]
+script = SubResource("GDScript_vmvhm")
