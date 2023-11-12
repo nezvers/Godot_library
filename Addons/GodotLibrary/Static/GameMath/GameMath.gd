@@ -85,3 +85,9 @@ static func packed_float32_total(array:PackedFloat32Array)->float:
 ## Get random values from a bell curve
 static func random_standard_deviation(mean:float, deviation:float)->float:
 	return deviation * -0.6266570687 * log((2147483647 * randf())) + mean;
+
+static func approach(value:float, target:float, speed:float)->float:
+	if value < target:
+		return min(value + speed, target)
+	else:
+		return max(value - speed, target)
