@@ -49,7 +49,7 @@ static func dampened_spring(displacement, damp, velocity, spring:float, delta:fl
 static func inverse_lerp(a:float, b:float, v:float)->float:
 	return (v - a) / (b - a)
 
-static func remap(imin:float, imax:float, omin:float, omax:float, v:float)->float:
+static func remap_lerp(imin:float, imax:float, omin:float, omax:float, v:float)->float:
 	var t: = inverse_lerp(imin, imax, v)
 	return lerp(omin, omax, t)
 
@@ -91,3 +91,11 @@ static func approach(value:float, target:float, speed:float)->float:
 		return min(value + speed, target)
 	else:
 		return max(value - speed, target)
+
+## Generic type
+func hookes_law(displacement, current_velocity, stiffness, damping):
+	return stiffness * displacement - damping * current_velocity
+
+func hookes_law_v3f(displacement:Vector3, current_velocity:Vector3, stiffness:float, damping:float)->Vector3:
+	return displacement * stiffness - damping * current_velocity
+
