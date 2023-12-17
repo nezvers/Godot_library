@@ -6,7 +6,7 @@ extends AnimationPlayer
 @export var nextAnimation:String : set = set_next_animation
 
 func _ready()->void:
-	set_process(playback_process_mode == ANIMATION_PROCESS_MANUAL)
+	set_process(callback_mode_process == ANIMATION_CALLBACK_MODE_PROCESS_MANUAL)
 	if !start_animation.is_empty():
 		play(start_animation)
 	if start_random_position:
