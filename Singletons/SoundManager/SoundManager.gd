@@ -3,23 +3,33 @@ extends Node
 
 ## During _ready will be created new SoundPlayers
 @export var start_count:int = 10
-
+@export var bus_name:String = "Sounds"
 
 var player_list:Array[SoundPlayer]
 
-
+## Make sure Sounds audio bus exists and create initial sound players
 func _ready()->void:
+	var sound_bus_index:int = AudioServer.get_bus_index(bus_name)
+	if sound_bus_index == -1:
+		var i:int = AudioServer.bus_count
+		AudioServer.add_bus(AudioServer.bus_count)
+		AudioServer.set_bus_name(i, bus_name)
+	
 	for i in start_count:
-		var new_player: = SoundPlayer.new()
-		add_child(new_player)
-		player_list.append(new_player)
+		create_player()
 
+## Pops out one sound player 
 func get_player()->SoundPlayer:
 	if player_list.is_empty():
-		var new_player: = SoundPlayer.new()
-		add_child(new_player)
-		return new_player
+		create_player()
 	return player_list.pop_back()
+
+func create_player()->SoundPlayer:
+	var new_player: = SoundPlayer.new()
+	new_player.bus = bus_name
+	add_child(new_player)
+	player_list.append(new_player)
+	return new_player
 
 func play(sound:SoundResource)->void:
 	if sound.sound_player != null:
