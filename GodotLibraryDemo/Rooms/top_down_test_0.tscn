@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://d7adgymcu5ry"]
 
 [ext_resource type="PackedScene" uid="uid://y84hodm7lwwe" path="res://GodotLibraryDemo/Scenes/player_top_down_2d.tscn" id="1_33mvn"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/ReferenceNodeResource/ReferenceNodeSetter.gd" id="2_1b71o"]
-[ext_resource type="Resource" uid="uid://cxjhisxftllxo" path="res://Addons/GodotLibrary/Singletons/CameraManager/Resource/MainCameraReference.tres" id="3_lkinn"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Resources/ReferenceNodeResource/ReferenceNodeSetter.gd" id="2_1b71o"]
+[ext_resource type="Resource" uid="uid://cxjhisxftllxo" path="res://addons/GodotLibrary/Singletons/CameraManager/Resource/MainCameraReference.tres" id="3_lkinn"]
 [ext_resource type="PackedScene" uid="uid://ci8525lfjeovj" path="res://GodotLibraryDemo/Scenes/npc_top_down_2d.tscn" id="4_yntem"]
 
 [node name="TopDownTest0" type="Node2D"]

@@ -1,1 +1,0 @@
-Singleton used as parent for 2D screen effects

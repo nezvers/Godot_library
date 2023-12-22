@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://dgwgk16s7lgte"]
 
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/CharacterTopDown2D.gd" id="1_0jmta"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/TopDown2DInputResource.gd" id="2_73hw8"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DStateResource.gd" id="3_shy6x"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DMovementResource.gd" id="4_ggi8c"]
-[ext_resource type="Texture2D" uid="uid://do1ki730wasv0" path="res://Addons/GodotLibrary/Assets/Sprites/Shapes/Circle_16x16.png" id="5_4462k"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/EffectResource/EffectNode2D.gd" id="6_1dsah"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/CharacterTopDown2D.gd" id="1_0jmta"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/TopDown2DInputResource.gd" id="2_73hw8"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/CharacterController/2D/Character2DStateResource.gd" id="3_shy6x"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/CharacterController/2D/Character2DMovementResource.gd" id="4_ggi8c"]
+[ext_resource type="Texture2D" uid="uid://do1ki730wasv0" path="res://addons/GodotLibrary/Assets/Sprites/Shapes/Circle_16x16.png" id="5_4462k"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Resources/EffectResource/EffectNode2D.gd" id="6_1dsah"]
 
 [sub_resource type="Resource" id="Resource_alpao"]
 resource_name = "Base input"

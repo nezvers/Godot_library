@@ -1,17 +1,17 @@
 [gd_scene load_steps=33 format=3 uid="uid://y84hodm7lwwe"]
 
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/TopDown2DInputResource.gd" id="1_gpio2"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/CharacterController/2D/CharacterTopDown2D/TopDown2DInputResource.gd" id="1_gpio2"]
 [ext_resource type="PackedScene" uid="uid://dgwgk16s7lgte" path="res://GodotLibraryDemo/Scenes/base_top_down_2d.tscn" id="1_wp17i"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DStateResource.gd" id="2_ed3am"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Character2DMovementResource.gd" id="3_idt2g"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CharacterController/2D/Nodes/Player2DInput.gd" id="4_e6nv7"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/ActionEventResource/ActionEventResource.gd" id="5_8spux"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Resources/InputMapResource/InputMapResource.gd" id="6_kvxdq"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CameraController/CameraController.gd" id="8_7tkug"]
-[ext_resource type="Resource" uid="uid://cxjhisxftllxo" path="res://Addons/GodotLibrary/Singletons/CameraManager/Resource/MainCameraReference.tres" id="9_wg1c1"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CameraController/Resource/CameraLerpModResource.gd" id="10_a5nmn"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/CameraController/Resource/CameraBoundsModResource.gd" id="10_olb1n"]
-[ext_resource type="Script" path="res://Addons/GodotLibrary/Nodes/Weapon/Weapon.gd" id="12_w8vft"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/CharacterController/2D/Character2DStateResource.gd" id="2_ed3am"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/CharacterController/2D/Character2DMovementResource.gd" id="3_idt2g"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/CharacterController/2D/Nodes/Player2DInput.gd" id="4_e6nv7"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Resources/ActionEventResource/ActionEventResource.gd" id="5_8spux"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Resources/InputMapResource/InputMapResource.gd" id="6_kvxdq"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/CameraController/CameraController.gd" id="8_7tkug"]
+[ext_resource type="Resource" uid="uid://cxjhisxftllxo" path="res://addons/GodotLibrary/Singletons/CameraManager/Resource/MainCameraReference.tres" id="9_wg1c1"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/CameraController/Resource/CameraLerpModResource.gd" id="10_a5nmn"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/CameraController/Resource/CameraBoundsModResource.gd" id="10_olb1n"]
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/Weapon/Weapon.gd" id="12_w8vft"]
 
 [sub_resource type="Resource" id="Resource_rhbow"]
 resource_name = "Player input"
@@ -157,7 +157,7 @@ dash = &"dash"
 [node name="CameraController" type="Marker2D" parent="." index="5"]
 script = ExtResource("8_7tkug")
 camera_reference = ExtResource("9_wg1c1")
-mod_list = Array[Resource("res://Addons/GodotLibrary/Nodes/CameraController/Resource/CameraModResource.gd")]([SubResource("Resource_epd5w"), SubResource("Resource_s61we")])
+mod_list = Array[Resource("res://addons/GodotLibrary/Nodes/CameraController/Resource/CameraModResource.gd")]([SubResource("Resource_epd5w"), SubResource("Resource_s61we")])
 
 [node name="Weapon" type="Node2D" parent="." index="6"]
 script = ExtResource("12_w8vft")
