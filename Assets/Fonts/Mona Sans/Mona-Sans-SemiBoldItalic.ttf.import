@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://btqfp105qd5e5"
-path="res://.godot/imported/Mona-Sans-SemiBoldItalic.ttf-c3fbe9f80cd9fa9cc1471da6508dc0f7.fontdata"
+path="res://.godot/imported/Mona-Sans-SemiBoldItalic.ttf-0366ef1f2ac90bc2caa8b39103aa0642.fontdata"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Fonts/Mona Sans/Mona-Sans-SemiBoldItalic.ttf"
-dest_files=["res://.godot/imported/Mona-Sans-SemiBoldItalic.ttf-c3fbe9f80cd9fa9cc1471da6508dc0f7.fontdata"]
+source_file="res://addons/Godot_library/Assets/Fonts/Mona Sans/Mona-Sans-SemiBoldItalic.ttf"
+dest_files=["res://.godot/imported/Mona-Sans-SemiBoldItalic.ttf-0366ef1f2ac90bc2caa8b39103aa0642.fontdata"]
 
 [params]
 

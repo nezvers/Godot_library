@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bumf0o5owglj7"
-path="res://.godot/imported/Punch impact.wav-51416bfc5cfb8a833eecbe9f8f710123.sample"
+path="res://.godot/imported/Punch impact.wav-eeab35bc9220a09b00b504073f64b5cc.sample"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Audio/Punch impact.wav"
-dest_files=["res://.godot/imported/Punch impact.wav-51416bfc5cfb8a833eecbe9f8f710123.sample"]
+source_file="res://addons/Godot_library/Assets/Audio/Punch impact.wav"
+dest_files=["res://.godot/imported/Punch impact.wav-eeab35bc9220a09b00b504073f64b5cc.sample"]
 
 [params]
 

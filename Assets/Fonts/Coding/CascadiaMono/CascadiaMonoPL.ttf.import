@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bnslw4vhw2aob"
-path="res://.godot/imported/CascadiaMonoPL.ttf-88a259043671c57316751c6c98a53ee4.fontdata"
+path="res://.godot/imported/CascadiaMonoPL.ttf-ae1a0eeb95d56b63853260a9787f0088.fontdata"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Fonts/Coding/CascadiaMono/CascadiaMonoPL.ttf"
-dest_files=["res://.godot/imported/CascadiaMonoPL.ttf-88a259043671c57316751c6c98a53ee4.fontdata"]
+source_file="res://addons/Godot_library/Assets/Fonts/Coding/CascadiaMono/CascadiaMonoPL.ttf"
+dest_files=["res://.godot/imported/CascadiaMonoPL.ttf-ae1a0eeb95d56b63853260a9787f0088.fontdata"]
 
 [params]
 

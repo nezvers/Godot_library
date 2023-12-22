@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://d108ayekj38xe"
-path="res://.godot/imported/Poppins-Light.ttf-ad5f60a0e80938d509be3597916af3e4.fontdata"
+path="res://.godot/imported/Poppins-Light.ttf-5365d0acffc2c678010ca4812c072b5c.fontdata"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Fonts/Poppins/Poppins-Light.ttf"
-dest_files=["res://.godot/imported/Poppins-Light.ttf-ad5f60a0e80938d509be3597916af3e4.fontdata"]
+source_file="res://addons/Godot_library/Assets/Fonts/Poppins/Poppins-Light.ttf"
+dest_files=["res://.godot/imported/Poppins-Light.ttf-5365d0acffc2c678010ca4812c072b5c.fontdata"]
 
 [params]
 

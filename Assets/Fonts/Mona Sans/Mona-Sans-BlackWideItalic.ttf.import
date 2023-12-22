@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c5hycmnd5g445"
-path="res://.godot/imported/Mona-Sans-BlackWideItalic.ttf-c87601406e71eaf93772671167b1eef4.fontdata"
+path="res://.godot/imported/Mona-Sans-BlackWideItalic.ttf-4c446f7450c1b67bb207d3c86337c101.fontdata"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Fonts/Mona Sans/Mona-Sans-BlackWideItalic.ttf"
-dest_files=["res://.godot/imported/Mona-Sans-BlackWideItalic.ttf-c87601406e71eaf93772671167b1eef4.fontdata"]
+source_file="res://addons/Godot_library/Assets/Fonts/Mona Sans/Mona-Sans-BlackWideItalic.ttf"
+dest_files=["res://.godot/imported/Mona-Sans-BlackWideItalic.ttf-4c446f7450c1b67bb207d3c86337c101.fontdata"]
 
 [params]
 

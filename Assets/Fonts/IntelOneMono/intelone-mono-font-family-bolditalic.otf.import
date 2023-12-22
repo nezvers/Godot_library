@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bbpiayfsfsgb2"
-path="res://.godot/imported/intelone-mono-font-family-bolditalic.otf-305f189b2a1cd4b8a0a3abe8e3140f71.fontdata"
+path="res://.godot/imported/intelone-mono-font-family-bolditalic.otf-b462391f961559e1ff738b90337bc19c.fontdata"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Fonts/IntelOneMono/intelone-mono-font-family-bolditalic.otf"
-dest_files=["res://.godot/imported/intelone-mono-font-family-bolditalic.otf-305f189b2a1cd4b8a0a3abe8e3140f71.fontdata"]
+source_file="res://addons/Godot_library/Assets/Fonts/IntelOneMono/intelone-mono-font-family-bolditalic.otf"
+dest_files=["res://.godot/imported/intelone-mono-font-family-bolditalic.otf-b462391f961559e1ff738b90337bc19c.fontdata"]
 
 [params]
 

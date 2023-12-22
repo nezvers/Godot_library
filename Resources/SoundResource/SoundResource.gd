@@ -46,6 +46,11 @@ func play(_sound_player:SoundPlayer)->void:
 	sound_player.volume_db = get_volume()
 	sound_player.play()
 
-
+## Tries to call SoundManager singleton for it to deal with life time of sound playing node.
 func play_managed()->void:
-	SoundManager.play(self)
+	var sound_manager:Node = Engine.get_main_loop().root.get_node("SoundManager")
+	if sound_manager == null:
+		print("ERROR: no SoundManager singleton detected")
+		return
+	sound_manager.play(self)
+	#SoundManager.play(self)

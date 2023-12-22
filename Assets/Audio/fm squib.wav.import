@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dw58aqvu0qlab"
-path="res://.godot/imported/fm squib.wav-7e6ade498e76b897a3c3a2648bcbc44c.sample"
+path="res://.godot/imported/fm squib.wav-8f9f0c6f359677cc7757cbfae32396d6.sample"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Audio/fm squib.wav"
-dest_files=["res://.godot/imported/fm squib.wav-7e6ade498e76b897a3c3a2648bcbc44c.sample"]
+source_file="res://addons/Godot_library/Assets/Audio/fm squib.wav"
+dest_files=["res://.godot/imported/fm squib.wav-8f9f0c6f359677cc7757cbfae32396d6.sample"]
 
 [params]
 

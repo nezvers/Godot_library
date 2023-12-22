@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bst3wj4jlwbfl"
-path="res://.godot/imported/Mona-Sans-BoldNarrow.ttf-052796071b3e21248241a5475bcd8521.fontdata"
+path="res://.godot/imported/Mona-Sans-BoldNarrow.ttf-cdf4d388083bd1421f35669378156837.fontdata"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Fonts/Mona Sans/Mona-Sans-BoldNarrow.ttf"
-dest_files=["res://.godot/imported/Mona-Sans-BoldNarrow.ttf-052796071b3e21248241a5475bcd8521.fontdata"]
+source_file="res://addons/Godot_library/Assets/Fonts/Mona Sans/Mona-Sans-BoldNarrow.ttf"
+dest_files=["res://.godot/imported/Mona-Sans-BoldNarrow.ttf-cdf4d388083bd1421f35669378156837.fontdata"]
 
 [params]
 

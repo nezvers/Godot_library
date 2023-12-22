@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://qddusxqj2vmv"
-path="res://.godot/imported/Poppins-ExtraBoldItalic.ttf-ccfa23bb19013bd17b0c14aba9f7e489.fontdata"
+path="res://.godot/imported/Poppins-ExtraBoldItalic.ttf-bcc64f765322f30bbaa7a9be5db56c21.fontdata"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Fonts/Poppins/Poppins-ExtraBoldItalic.ttf"
-dest_files=["res://.godot/imported/Poppins-ExtraBoldItalic.ttf-ccfa23bb19013bd17b0c14aba9f7e489.fontdata"]
+source_file="res://addons/Godot_library/Assets/Fonts/Poppins/Poppins-ExtraBoldItalic.ttf"
+dest_files=["res://.godot/imported/Poppins-ExtraBoldItalic.ttf-bcc64f765322f30bbaa7a9be5db56c21.fontdata"]
 
 [params]
 

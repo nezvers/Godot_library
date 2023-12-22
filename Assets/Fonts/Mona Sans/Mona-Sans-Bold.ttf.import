@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://67pvujsqynvr"
-path="res://.godot/imported/Mona-Sans-Bold.ttf-84e826f405c233cbec15ef6ef934abc3.fontdata"
+path="res://.godot/imported/Mona-Sans-Bold.ttf-09889bc8051197278dbedbb5462d1207.fontdata"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Fonts/Mona Sans/Mona-Sans-Bold.ttf"
-dest_files=["res://.godot/imported/Mona-Sans-Bold.ttf-84e826f405c233cbec15ef6ef934abc3.fontdata"]
+source_file="res://addons/Godot_library/Assets/Fonts/Mona Sans/Mona-Sans-Bold.ttf"
+dest_files=["res://.godot/imported/Mona-Sans-Bold.ttf-09889bc8051197278dbedbb5462d1207.fontdata"]
 
 [params]
 

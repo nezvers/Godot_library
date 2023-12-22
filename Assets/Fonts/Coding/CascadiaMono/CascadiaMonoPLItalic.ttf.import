@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://gfau1tlyskpu"
-path="res://.godot/imported/CascadiaMonoPLItalic.ttf-a4bebdb0be68314c2dff084d02de6434.fontdata"
+path="res://.godot/imported/CascadiaMonoPLItalic.ttf-7b60e3083ea258fcc3d3c209bc74c4c4.fontdata"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Fonts/Coding/CascadiaMono/CascadiaMonoPLItalic.ttf"
-dest_files=["res://.godot/imported/CascadiaMonoPLItalic.ttf-a4bebdb0be68314c2dff084d02de6434.fontdata"]
+source_file="res://addons/Godot_library/Assets/Fonts/Coding/CascadiaMono/CascadiaMonoPLItalic.ttf"
+dest_files=["res://.godot/imported/CascadiaMonoPLItalic.ttf-7b60e3083ea258fcc3d3c209bc74c4c4.fontdata"]
 
 [params]
 

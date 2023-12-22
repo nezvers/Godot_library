@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b1k1vtvdn57tu"
-path="res://.godot/imported/Mona-Sans-RegularNarrowItalic.ttf-47aea8ecc53b3117bb99c267732d7be7.fontdata"
+path="res://.godot/imported/Mona-Sans-RegularNarrowItalic.ttf-26dc8c5ac033eccbc00b6511c4f71e39.fontdata"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Fonts/Mona Sans/Mona-Sans-RegularNarrowItalic.ttf"
-dest_files=["res://.godot/imported/Mona-Sans-RegularNarrowItalic.ttf-47aea8ecc53b3117bb99c267732d7be7.fontdata"]
+source_file="res://addons/Godot_library/Assets/Fonts/Mona Sans/Mona-Sans-RegularNarrowItalic.ttf"
+dest_files=["res://.godot/imported/Mona-Sans-RegularNarrowItalic.ttf-26dc8c5ac033eccbc00b6511c4f71e39.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ckjleyhgh43j5"
-path="res://.godot/imported/intelone-mono-font-family-medium.otf-3f857d7ce7efb09afbf3bb492408ea1b.fontdata"
+path="res://.godot/imported/intelone-mono-font-family-medium.otf-2c3aa64385cc8c76d09ff766565ae864.fontdata"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Fonts/IntelOneMono/intelone-mono-font-family-medium.otf"
-dest_files=["res://.godot/imported/intelone-mono-font-family-medium.otf-3f857d7ce7efb09afbf3bb492408ea1b.fontdata"]
+source_file="res://addons/Godot_library/Assets/Fonts/IntelOneMono/intelone-mono-font-family-medium.otf"
+dest_files=["res://.godot/imported/intelone-mono-font-family-medium.otf-2c3aa64385cc8c76d09ff766565ae864.fontdata"]
 
 [params]
 

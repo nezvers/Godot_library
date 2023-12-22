@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ce7gjggvd5tfi"
-path="res://.godot/imported/pico-8-1x.png-61fa6943ad917f74c7fdee9203d81b62.ctex"
+path="res://.godot/imported/pico-8-1x.png-1efdb057a8e884502efa2e5c6a931067.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Palettes/pico-8-1x.png"
-dest_files=["res://.godot/imported/pico-8-1x.png-61fa6943ad917f74c7fdee9203d81b62.ctex"]
+source_file="res://addons/Godot_library/Assets/Palettes/pico-8-1x.png"
+dest_files=["res://.godot/imported/pico-8-1x.png-1efdb057a8e884502efa2e5c6a931067.ctex"]
 
 [params]
 

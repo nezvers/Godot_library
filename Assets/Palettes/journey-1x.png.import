@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4a52cpgbhd1h"
-path="res://.godot/imported/journey-1x.png-394f36eea0e0316410fd71ccb44ab732.ctex"
+path="res://.godot/imported/journey-1x.png-e4734c45c2272b03a7f6cd1b405c2d18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Palettes/journey-1x.png"
-dest_files=["res://.godot/imported/journey-1x.png-394f36eea0e0316410fd71ccb44ab732.ctex"]
+source_file="res://addons/Godot_library/Assets/Palettes/journey-1x.png"
+dest_files=["res://.godot/imported/journey-1x.png-e4734c45c2272b03a7f6cd1b405c2d18.ctex"]
 
 [params]
 

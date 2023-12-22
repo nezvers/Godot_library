@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b6vqn0vsu3u35"]
 
-[ext_resource type="Script" path="res://addons/GodotLibrary/Singletons/SoundManager/SoundManager.gd" id="1_541o6"]
+[ext_resource type="Script" path="res://addons/Godot_library/Singletons/SoundManager/SoundManager.gd" id="1_541o6"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_541o6")

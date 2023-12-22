@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bwhge1pcsn4mc"
-path="res://.godot/imported/JetBrainsMono-Italic[wght].ttf-8713856837c06cd04dbdedd4d9351357.fontdata"
+path="res://.godot/imported/JetBrainsMono-Italic[wght].ttf-f14b722e4855b05784755c2ec3c74574.fontdata"
 
 [deps]
 
-source_file="res://addons/GodotLibrary/Assets/Fonts/Coding/JetbrainsMono/JetBrainsMono-Italic[wght].ttf"
-dest_files=["res://.godot/imported/JetBrainsMono-Italic[wght].ttf-8713856837c06cd04dbdedd4d9351357.fontdata"]
+source_file="res://addons/Godot_library/Assets/Fonts/Coding/JetbrainsMono/JetBrainsMono-Italic[wght].ttf"
+dest_files=["res://.godot/imported/JetBrainsMono-Italic[wght].ttf-f14b722e4855b05784755c2ec3c74574.fontdata"]
 
 [params]
 

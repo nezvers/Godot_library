@@ -19,7 +19,11 @@ var direction:Vector2
 
 ## Plays screen shake on camera assigned to reference resource.
 func play()->void:
-	var camera:Camera2D = CameraManager.get_current_camera()
+	var camera_manager:Node = Engine.get_main_loop().root.get_node("CameraManager")
+	if camera_manager == null:
+		print("ERROR: no CameraManager singleton detected")
+		return
+	var camera:Camera2D = camera_manager.get_current_camera()
 	if camera == null:
 		return
 	

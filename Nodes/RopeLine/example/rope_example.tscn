@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxlvxysgry5du"]
 
-[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/RopeLine/Rope2D.gd" id="1_2b2te"]
-[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/RopeLine/RopeFollower2D.gd" id="2_pi7l6"]
-[ext_resource type="Texture2D" uid="uid://rw0e1sy1owe0" path="res://icon.png" id="3_115fe"]
-[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/RopeLine/RopeMover.gd" id="4_thwqm"]
+[ext_resource type="Script" path="res://addons/Godot_library/Nodes/RopeLine/Rope2D.gd" id="1_2b2te"]
+[ext_resource type="Script" path="res://addons/Godot_library/Nodes/RopeLine/RopeFollower2D.gd" id="2_pi7l6"]
+[ext_resource type="Texture2D" uid="uid://ddwmicapeu3ix" path="res://icon.svg" id="3_115fe"]
+[ext_resource type="Script" path="res://addons/Godot_library/Nodes/RopeLine/RopeMover.gd" id="4_thwqm"]
 
 [node name="RopeExample" type="Node2D"]
 
