@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8gyxdt7ll7k3"]
+
+[ext_resource type="Script" path="res://addons/GodotLibrary/Nodes/CameraTarget/CameraTarget.gd" id="1_v0uqp"]
+[ext_resource type="Resource" path="res://addons/LevelEditor/Resource/ReferenceNodeResource/CameraReference.tres" id="2_xr8rk"]
+[ext_resource type="Resource" path="res://addons/LevelEditor/Resource/ReferenceNodeResource/IsEditorReference.tres" id="3_ux6mi"]
+
+[node name="CameraTarget" type="Node2D"]
+script = ExtResource("1_v0uqp")
+cameraReference = ExtResource("2_xr8rk")
+isEditorReference = ExtResource("3_ux6mi")

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bxvkx72d1i2cx"]
+
+[ext_resource type="Shader" path="res://addons/GodotLibrary/Nodes/TransitionOverlay/Cutout_transition.gdshader" id="1_y5kly"]
+
+[resource]
+shader = ExtResource("1_y5kly")
+shader_parameter/progress = 0.0
+shader_parameter/scale_min = 0.001
+shader_parameter/scale_max = 6.0
+shader_parameter/offset = Vector2(0.5, 0.5)

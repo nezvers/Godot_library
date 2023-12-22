@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SoundResource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/GodotLibrary/Resources/SoundResource/SoundResource.gd" id="1_8gjj1"]
+[ext_resource type="AudioStream" path="res://addons/GodotLibrary/Assets/Audio/fm squib.wav" id="2_fq1qo"]
+
+[resource]
+script = ExtResource("1_8gjj1")
+pitch_min = 0.9
+pitch_max = 1.2
+volume = 11.4224
+sound = ExtResource("2_fq1qo")
+retrigger_time = 0.032
+pitch_cooldown = 0.0
+pitch_return = 0.0
+pitch_add = 0.0

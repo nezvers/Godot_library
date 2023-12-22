@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm6wvtmwurthe"]
+
+[ext_resource type="Script" path="res://addons/GodotLibrary/Singletons/ScreenEffect/ScreenEffect.gd" id="1_fp5m4"]
+
+[node name="ScreenEffect" type="CanvasLayer"]
+script = ExtResource("1_fp5m4")

@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://br3w38jrt3feh"]
+
+[ext_resource type="Script" path="res://addons/GodotLibrary/Resources/SoundResource/Tool/sound_volume_adjuster.gd" id="1_ychsr"]
+[ext_resource type="Resource" uid="uid://dfnquyo1lwbuw" path="res://addons/GodotLibrary/Assets/Sounds/Shoot.tres" id="2_vrjg2"]
+
+[node name="SoundVolumeAdjuster" type="PanelContainer" node_paths=PackedStringArray("name_label_container", "value_label_container", "slider_container", "save_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ychsr")
+sound_resource_list = Array[Resource("res://addons/GodotLibrary/Resources/SoundResource/SoundResource.gd")]([ExtResource("2_vrjg2")])
+name_label_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MainContainer/NameLabelContainer")
+value_label_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MainContainer/ValueLabelContainer")
+slider_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MainContainer/SliderContainer")
+save_button = NodePath("MarginContainer/VBoxContainer/TopButtons/SaveButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TopButtons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/TopButtons"]
+layout_mode = 2
+text = "Save"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MainContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="NameLabelContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MainContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MainContainer/NameLabelContainer"]
+visible = false
+layout_mode = 2
+text = "SoundName"
+
+[node name="SliderContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/MainContainer/SliderContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ValueLabelContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MainContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MainContainer/ValueLabelContainer"]
+visible = false
+layout_mode = 2
+text = "SoundName"
