@@ -3,6 +3,7 @@ class_name AudioSettingsResource
 extends SaveableResource
 
 @export var audio_bus_layout:AudioBusLayout
+@export var values:Dictionary
 
 func set_audo_bus_layout()->void:
 	AudioServer.set_bus_layout(audio_bus_layout)
@@ -21,6 +22,9 @@ func prepare_save()->Resource:
 func prepare_load(data:Resource)->void:
 	audio_bus_layout = data.audio_bus_layout
 	set_audo_bus_layout()
+	for bus_name in data.values:
+		#print(bus_name, " ", data.values[bus_name])
+		set_bus_volume(bus_name, data.values[bus_name]["volume"])
 
 func set_bus_volume(bus:StringName, volume:float)->void:
 	var idx: = AudioServer.get_bus_index(bus)
@@ -30,6 +34,7 @@ func set_bus_volume(bus:StringName, volume:float)->void:
 	var db:float = linear_to_db(volume)
 	#print(bus, " ", volume, " ", db)
 	db = clamp(db, -80.0, +24.0)
+	values[bus] = {volume = volume, db = db}
 	AudioServer.set_bus_volume_db(idx, db)
 
 func get_bus_volume(bus:StringName)->float:
@@ -39,4 +44,5 @@ func get_bus_volume(bus:StringName)->float:
 		return 0.0
 	var db:float = AudioServer.get_bus_volume_db(idx)
 	var volume:float = db_to_linear(db)
+	values[bus] = {volume = volume, db = db}
 	return volume

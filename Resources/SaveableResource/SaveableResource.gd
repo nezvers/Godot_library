@@ -5,6 +5,8 @@ extends Resource
 signal resource_saved
 signal resource_loaded
 
+@export var version:String
+
 ## Override function for resetting to default values
 func reset_resource()->void:
 	pass

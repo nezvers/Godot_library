@@ -16,7 +16,6 @@ func _ready()->void:
 	## Populate nodes in their directories
 	for key in menu_path.keys():
 		var path: = NodePath(key)
-		print(path)
 		var node:Node = get_node(menu_path[key])
 		node.visible = false
 		directory_resource.add_item(path, node, node_key)
