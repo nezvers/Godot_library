@@ -4,7 +4,7 @@ extends RefCounted
 enum DamageType {NONE, FIRE, ICE, WATER, LIGHTNING, EARTH, STEAM, ARCANE, 
 				SHADOW, CURSE, TOXIC, BLUNT, PIERCE, SLASH, COUNT}
 
-enum GameState {NONE, TITLE, GAMEPLAY, STORE, LEVEL_EDITOR, PAUSE, CUTSCENE,
+enum GameStates {NONE, TITLE, GAMEPLAY, STORE, LEVEL_EDITOR, PAUSE, CUTSCENE,
 				COMPLETED, LOST, FADE_IN, FADE_OUT, SWITCH, NEW_SCENE, COUNT}
 
 ## Bitmasking flags could be used to create animation look-up table or character state managing.
