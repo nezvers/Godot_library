@@ -10,7 +10,7 @@ signal selected_directory_changed
 var directory_tree:Dictionary
 #   {
 #   	"." = {
-#   		"_node_" = MyNode,
+#   		"_item_type_" = MyItem,
 #   		
 #   		"options" = {
 #   			"graphics" = {},
