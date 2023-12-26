@@ -23,6 +23,16 @@ var history_scenes:AssetResource = AssetResource.new()
 @export var gui_parent_reference:ReferenceNodeResource
 
 var current_gui_key:String
+## Common state resources for identifying scene state
+enum {
+	NEW_SCENE, # set by SceneManager after adding scene to the tree
+	FADE_IN, 
+	IDLE, 
+	FADE_OUT, 
+	FREE
+}
+var state_game_scene: = StateMachineResource.new()
+var state_gui_scene: = StateMachineResource.new()
 
 func _ready()->void:
 	await get_tree().process_frame
@@ -34,9 +44,8 @@ func init_room()->void:
 	global_scenes.load_resource()
 	
 	set_global_room(global_scenes.selected)
-	set_gui(gui_scenes.selected)
 
-func set_node(key:String, scene_list:AssetResource, parent:ReferenceNodeResource, save_history:bool)->void:
+func set_node(key:String, scene_list:AssetResource, parent:ReferenceNodeResource, state_resource:StateMachineResource, save_history:bool)->void:
 	scene_list.load_resource()
 	if parent == null:
 		print("SceneManager: ERROR - scene LIST is NULL")
@@ -51,6 +60,7 @@ func set_node(key:String, scene_list:AssetResource, parent:ReferenceNodeResource
 	for node in parent.node.get_children():
 		parent.node.remove_child(node)
 		node.queue_free()
+	state_resource.transition(FREE)
 	# Retrieve room scene file
 	var scene:PackedScene = scene_list.get_asset(key)
 	if scene == null:
@@ -58,6 +68,9 @@ func set_node(key:String, scene_list:AssetResource, parent:ReferenceNodeResource
 		return
 	var scene_inst:Node = scene.instantiate()
 	parent.node.add_child(scene_inst)
+	state_resource.transition(NEW_SCENE)
+	if state_resource.state != FADE_IN:
+		state_resource.transition(IDLE)
 	if save_history:
 		return
 	history_add(scene_list.dictionary[key])
@@ -70,15 +83,15 @@ func history_add(value:String)->void:
 		history_scenes.list.resize(history_length)
 
 func set_game_room(key:String)->void:
-	set_node(key, game_scenes, game_parent_reference, true)
+	set_node(key, game_scenes, game_parent_reference, state_game_scene, true)
 
 func set_global_room(key:String)->void:
-	set_node(key, global_scenes, game_parent_reference, true)
+	set_node(key, global_scenes, game_parent_reference, state_game_scene, true)
 
 func set_gui(key:String)->void:
 	if current_gui_key == key:
 		return
 	current_gui_key = key
-	set_node(key, gui_scenes, gui_parent_reference, false)
+	set_node(key, gui_scenes, gui_parent_reference, state_gui_scene, false)
 
 
