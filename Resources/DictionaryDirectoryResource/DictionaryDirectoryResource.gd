@@ -1,5 +1,5 @@
 class_name DictionaryDirectoryResource
-extends Resource
+extends SaveableResource
 
 signal selected_directory_changed
 
@@ -7,7 +7,7 @@ signal selected_directory_changed
 @export var selected_directory:NodePath = "."
 
 ## Holds tree like structure Dictionaries to represent directories
-var directory_tree:Dictionary
+@export var directory_tree:Dictionary = { "." = {} }
 #   {
 #   	"." = {
 #   		"_item_type_" = MyItem,
@@ -20,6 +20,20 @@ var directory_tree:Dictionary
 #   	}
 #   }
 
+## Override function for resetting to default values
+## Init to root directory
+func reset_resource()->void:
+	directory_tree = { "." = {} }
+	selected_directory = NodePath(".")
+
+## Override for creating data Resource that will be saved with the ResourceSaver
+func prepare_save()->Resource:
+	return self.duplicate()
+
+## Override to ad logic for reading loaded data and applying to current instance of the Resource
+func prepare_load(_data:Resource)->void:
+	pass
+
 ## Notify with a selected_directory_changed signal.
 func set_selected_directory(value:NodePath)->void:
 	selected_directory = value
@@ -27,17 +41,22 @@ func set_selected_directory(value:NodePath)->void:
 
 ## Adds a node in its dedicated directory
 func add_item(path:NodePath, node:Node, node_name:String)->void:
-	var current_directory:Dictionary = directory_get(path)
+	var current_directory:Dictionary = directory_get(path, true)
 	current_directory[node_name] = node
 
 ## Retrieved dictionary that holds data about a directory
-func directory_get(path:NodePath)->Dictionary:
+func directory_get(path:NodePath, create:bool = false)->Dictionary:
 	## TODO: Maybe for security purposes, if node_key represents non-directory-list, need to check access rights
 	var current_directory:Dictionary = directory_tree
 	for i in path.get_name_count():
 		var path_name: = path.get_name(i)
 		if !current_directory.has(path_name):
-			current_directory[path_name] = {}
+			if create:
+				current_directory[path_name] = {}
+			else:
+				break
+		if !(current_directory[path_name] is Dictionary):
+			break
 		current_directory = current_directory[path_name]
 	return current_directory
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://sbve7xbnxje1"
-path="res://.godot/imported/Enemy kill.wav-091ebde2f78c1b664a006f114ebf9731.sample"
+path="res://.godot/imported/Enemy kill.wav-b4e206cc0d18fab08f6ae518514d5159.sample"
 
 [deps]
 
-source_file="res://addons/Godot_library/Singletons/CameraManager/Enemy kill.wav"
-dest_files=["res://.godot/imported/Enemy kill.wav-091ebde2f78c1b664a006f114ebf9731.sample"]
+source_file="res://addons/Godot_library/Assets/Audio/Enemy kill.wav"
+dest_files=["res://.godot/imported/Enemy kill.wav-b4e206cc0d18fab08f6ae518514d5159.sample"]
 
 [params]
 

@@ -4,17 +4,12 @@ extends Node
 ## During _ready will be created new SoundPlayers
 @export var start_count:int = 10
 @export var bus_name:String = "Sounds"
+@export var audio_settings:AudioSettingsResource
 
 var player_list:Array[SoundPlayer]
 
 ## Make sure Sounds audio bus exists and create initial sound players
 func _ready()->void:
-	var sound_bus_index:int = AudioServer.get_bus_index(bus_name)
-	if sound_bus_index == -1:
-		var i:int = AudioServer.bus_count
-		AudioServer.add_bus(AudioServer.bus_count)
-		AudioServer.set_bus_name(i, bus_name)
-	
 	for i in start_count:
 		create_player()
 
