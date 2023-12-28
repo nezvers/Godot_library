@@ -3,10 +3,12 @@ shader_type canvas_item;
 uniform vec2 size = vec2(217,55);// required to provide
 uniform float scale = 1.0;
 uniform float rotation = 0.0;
-uniform vec2 sckew = vec2(0.0, 0.0);
+uniform vec2 skew = vec2(0.0, 0.0);
 uniform vec2 offset = vec2(0.0, 0.0);
 uniform vec2 stretch = vec2(1.0, 1.0);
 uniform vec4 overlay: source_color = vec4(1.0, 1.0, 1.0, 0.0);
+uniform sampler2D mask_texture: source_color;
+uniform float mask_blend: hint_range(0.0, 1.0) = 0.0;
 uniform float saturation = 1.0;
 uniform vec3 hsv = vec3(0.0);
 
@@ -18,7 +20,7 @@ uniform float shine_angle : hint_range(0.0, 89.9) = 45.0;
 varying vec4 MODULATE; // seems to be a removed built-in variable from 3.x. Now it is baked in fragment color.
 void vertex(){
 	vec2 half_size = size * 0.5;
-	vec2 skew_offset = sckew * -(UV.yx - vec2(0.5, 0.5)) * 2.0;
+	vec2 skew_offset = skew * -(UV.yx - vec2(0.5, 0.5)) * 2.0;
 	vec2 from_center = VERTEX - half_size + skew_offset;
 	float len = length(from_center);
 	float angle = atan(from_center.y, from_center.x);
@@ -76,11 +78,16 @@ vec3 hsv_shift(vec3 color){
 	return hsv2rgb(hsv_from_rgb);
 }
 
+float mask_fade(float alpha, vec2 uv){
+	return alpha * texture(mask_texture, uv).a;
+}
+
 void fragment(){
-	COLOR.rgb = mix(COLOR.rgb, overlay.rgb, overlay.a);	// Overlay
 	COLOR.rgb = hsv_shift(COLOR.rgb);					// HSV
 	COLOR.rgb = saturated_color(COLOR.rgb, saturation);	// Saturation
+	COLOR.rgb = mix(COLOR.rgb, overlay.rgb, overlay.a);	// Overlay
 	COLOR.rgb = shine(COLOR.rgb, UV);					// Shine
+	COLOR.a = mask_fade(COLOR.a, UV);
 }
 
 
