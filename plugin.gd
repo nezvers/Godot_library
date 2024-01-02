@@ -12,21 +12,23 @@ class Setup:
 		if !DirAccess.dir_exists_absolute("res://autoload/"):
 			DirAccess.make_dir_recursive_absolute("res://autoload/")
 		
-		var target_path:String
+		var target_path:String = "res://autoload/SaveManager.tscn"
 		if !FileAccess.file_exists(target_path):
+			print("SaveManager DOESN'T EXIST: ", target_path)
 			var save_manager_scene:PackedScene = preload("res://addons/Godot_library/Singletons/SaveManager/Scenes/SaveManager.tscn")
-			target_path = "res://autoload/SaveManager.tscn"
 			ResourceSaver.save(save_manager_scene, target_path)
 		editor_plugin.add_autoload_singleton("SaveManager", target_path)
 		
 		target_path = "res://autoload/SceneManager.tscn"
 		if !FileAccess.file_exists(target_path):
+			print("SceneManager DOESN'T EXIST: ", target_path)
 			var scene_manager_scene:PackedScene = preload("res://addons/Godot_library/Singletons/SceneManager/Scenes/SceneManager.tscn")
 			ResourceSaver.save(scene_manager_scene, target_path)
 		editor_plugin.add_autoload_singleton("SceneManager", target_path)
 		
 		target_path = "res://autoload/SoundManager.tscn"
 		if !FileAccess.file_exists(target_path):
+			print("SoundManager DOESN'T EXIST: ", target_path)
 			var sound_manager_scene:PackedScene = preload("res://addons/Godot_library/Singletons/SoundManager/Scenes/SoundManager.tscn")
 			ResourceSaver.save(sound_manager_scene, target_path)
 		editor_plugin.add_autoload_singleton("SoundManager", target_path)
