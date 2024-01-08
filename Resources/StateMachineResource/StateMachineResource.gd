@@ -14,8 +14,9 @@ signal state_exit
 signal state_enter
 ## Emitted when transitioning has been canceled and is possible to inject override state.
 signal state_enter_canceled
-## Utility signal for state machine related signalling outside transitioning function.
-signal continue_transition
+
+## Holds array of states. Optional data if needed.
+@export var state_resource_list:Array[StateResource]
 
 ## Current state
 var state:int
@@ -26,21 +27,22 @@ var previous_state:int
 ## Flag to transition logic to cancel transitioning. Used during state_exit 
 var cancel_enter:bool = false
 
+
 ## Method to transition between states.
 func transition(_next_state:int)->void:
 	if _next_state == state:
 		state_repeat.emit()
-#		print("Repeat: ", state_names[_next_state])
 		return
 	next_state = _next_state
+	# Signal allows to check if state injection is needed.
+	# If so set the cancel_enter to true
 	state_exit.emit()
 	if cancel_enter:
 		cancel_enter = false
-#		print("Blocked: ", state_names[state], " to ", state_names[next_state])
 		state_enter_canceled.emit()
 		return
 	
 	previous_state = state
 	state = next_state
-#	print("New state: ", state_names[state])
 	state_enter.emit()
+

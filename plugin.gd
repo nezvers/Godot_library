@@ -12,7 +12,14 @@ class Setup:
 		if !DirAccess.dir_exists_absolute("res://autoload/"):
 			DirAccess.make_dir_recursive_absolute("res://autoload/")
 		
-		var target_path:String = "res://autoload/SaveManager.tscn"
+		var target_path:String = "res://autoload/GameStateManager.tscn"
+		if !FileAccess.file_exists(target_path):
+			print("SceneManager DOESN'T EXIST: ", target_path)
+			var game_state_scene:PackedScene = preload("res://addons/Godot_library/Singletons/GameStateManager/scene/game_state_manager.tscn")
+			ResourceSaver.save(game_state_scene, target_path)
+		editor_plugin.add_autoload_singleton("GameStateManager", target_path)
+		
+		target_path = "res://autoload/SaveManager.tscn"
 		if !FileAccess.file_exists(target_path):
 			print("SaveManager DOESN'T EXIST: ", target_path)
 			var save_manager_scene:PackedScene = preload("res://addons/Godot_library/Singletons/SaveManager/Scenes/SaveManager.tscn")

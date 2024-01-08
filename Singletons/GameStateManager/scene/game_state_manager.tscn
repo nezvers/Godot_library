@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c24w3uvx85vu8"]
+
+[ext_resource type="Script" path="res://addons/Godot_library/Singletons/GameStateManager/game_state_manager.gd" id="1_hwvpv"]
+
+[node name="GameStateManager" type="Node"]
+script = ExtResource("1_hwvpv")
