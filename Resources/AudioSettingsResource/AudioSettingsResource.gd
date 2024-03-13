@@ -29,7 +29,7 @@ func prepare_load(data:Resource)->void:
 func set_bus_volume(bus:StringName, volume:float)->void:
 	var idx: = AudioServer.get_bus_index(bus)
 	if idx == -1:
-		print("AudioSettingsResource: ERROR - setting non existing audio bus [", bus, "]")
+		printerr("AudioSettingsResource: ERROR - setting non existing audio bus [", bus, "]")
 		return
 	var db:float = linear_to_db(volume)
 	#print(bus, " ", volume, " ", db)
@@ -40,7 +40,7 @@ func set_bus_volume(bus:StringName, volume:float)->void:
 func get_bus_volume(bus:StringName)->float:
 	var idx: = AudioServer.get_bus_index(bus)
 	if idx == -1:
-		print("AudioSettingsResource: ERROR - getting non existing audio bus [", bus, "]")
+		printerr("AudioSettingsResource: ERROR - getting non existing audio bus [", bus, "]")
 		return 0.0
 	var db:float = AudioServer.get_bus_volume_db(idx)
 	var volume:float = db_to_linear(db)

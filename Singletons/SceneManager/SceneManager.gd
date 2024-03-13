@@ -48,10 +48,10 @@ func init_room()->void:
 func set_node(key:String, scene_list:AssetResource, parent:ReferenceNodeResource, state_resource:StateMachineResource, save_history:bool)->void:
 	scene_list.load_resource()
 	if parent == null:
-		print("SceneManager: ERROR - scene LIST is NULL")
+		printerr("SceneManager: ERROR - scene LIST is NULL")
 		return
 	if parent.node == null:
-		print("SceneManager: ERROR - scene list NODE is NULL: ", scene_list.resource_path.get_basename().get_file())
+		printerr("SceneManager: ERROR - scene list NODE is NULL: ", scene_list.resource_path.get_basename().get_file())
 		return
 	if !scene_list.dictionary.has(key):
 		print("SceneManager: ERROR - scene list ", scene_list.resource_path.get_basename().get_file(), " doesn't has a room: ", key)
@@ -64,7 +64,7 @@ func set_node(key:String, scene_list:AssetResource, parent:ReferenceNodeResource
 	# Retrieve room scene file
 	var scene:PackedScene = scene_list.get_asset(key)
 	if scene == null:
-		print("SceneManager: ERROR - scene list ", scene_list.resource_path.get_basename(), " has INVALID room : ", key)
+		printerr("SceneManager: ERROR - scene list ", scene_list.resource_path.get_basename(), " has INVALID room : ", key)
 		return
 	var scene_inst:Node = scene.instantiate()
 	parent.node.add_child(scene_inst)
@@ -88,6 +88,7 @@ func set_game_room(key:String)->void:
 func set_global_room(key:String)->void:
 	set_node(key, global_scenes, game_parent_reference, state_game_scene, true)
 
+### Use key to instantiate a gui scene
 func set_gui(key:String)->void:
 	if current_gui_key == key:
 		return

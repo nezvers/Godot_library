@@ -31,6 +31,7 @@ func save_resource()->void:
 func load_resource()->void:
 	if !FileAccess.file_exists(get_save_file_path()):
 		print(resource_name, ": no savefile")
+		reset_resource()
 		return
 	var data:Resource = ResourceLoader.load(get_save_file_path())
 	if data == null:
