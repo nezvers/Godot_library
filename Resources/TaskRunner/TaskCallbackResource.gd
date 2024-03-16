@@ -22,6 +22,7 @@ enum Result {
 ## Next sibiling task can stop further chain with ERROR and CANCEL results
 @export var result_from_next:bool = true
 
+## Important: root task must have callback_complete assigned
 ## gets called with (result:Result, task_runner:TaskCallbackResource = self)
 var callback_complete:Callable = Callable()
 ## Holds bound values to send further when user calls task_next() 
@@ -102,9 +103,8 @@ func _call_sibilings_completed(_result:Result, _task_runner:TaskCallbackResource
 
 ## Called after executing self, first children and next sibiling
 func _call_complete()->void:
-	if callback_complete.is_null():
-		_call_error()
-		return
+	# chains root must have a callback assigned
+	assert(!callback_complete.is_null())
 	
 	print("TaskCallbackResource: SUCCESS - ", resource_name )
 	# create temporary copy to have cleared current calback when calling
@@ -121,6 +121,7 @@ func _call_error()->void:
 	var callback_temp: = callback_complete
 	callback_complete = Callable()
 	callback_temp.call()
+
 
 static func test_single_tick_loop(count:int = 10, sibiling_count:int = 3, depth:int = 10)->void:
 	print("---------------------------")
@@ -144,11 +145,11 @@ static func test_single_tick_loop(count:int = 10, sibiling_count:int = 3, depth:
 	
 	_root[0].test_run(Result.SUCCESS, _root[0], _root, depth)
 
-func test_run(result:Result, task_runner:TaskCallbackResource, tasks:Array[TaskCallbackResource], i:int):
+static func test_run(result:Result, task_runner:TaskCallbackResource, tasks:Array[TaskCallbackResource], i:int):
 	if i == 0:
 		return
-	print("___________________________")
-	task_runner.callback_complete = task_runner.test_run.bind(tasks, i-1)
+	print(i, ": ___________________________")
+	task_runner.callback_complete = TaskCallbackResource.test_run.bind(tasks, i-1)
 	task_runner.task_start(tasks, 0)
 
 func test_success()->void:
@@ -156,6 +157,9 @@ func test_success()->void:
 	# tests cancellation in a chain
 	if randf() < 0.03:
 		task_cancel()
+		return
+	if randf() < 0.03:
+		_call_error()
 		return
 	#tests cases where whole chain happens in one tick
 	task_next()
