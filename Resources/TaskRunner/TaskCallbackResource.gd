@@ -33,7 +33,7 @@ var reset_callbacks:bool = true
 ## User triggerable function to start transition to next task in the chain
 func task_next()->void:
 	if callback_next.is_null():
-		print("TaskCallbackResource: ERROR - callback_next is not assigned")
+		printerr("TaskCallbackResource: ERROR - callback_next is not assigned")
 		return
 	callback_next.call()
 
@@ -50,16 +50,8 @@ func task_cancel()->void:
 func task_start(sibilings:Array[TaskCallbackResource], index:int)->void:	
 	# Bind sibiling and index
 	callback_next = _task_children.bind(sibilings, index)
-	## Notify a user to execute the task
+	## Notify a user to execute the bound task
 	task_started.emit()
-	
-	# TODO: remove these testing calls
-	# tests cancellation in a chain
-	if randf() < 0.01:
-		task_cancel()
-		return
-	#tests cases where whole chain happens in one tick
-	task_next()
 
 ## Internally used to mowe a flow through children tasks after user complete task
 func _task_children(sibilings:Array[TaskCallbackResource], index:int)->void:
@@ -76,6 +68,9 @@ func _task_children(sibilings:Array[TaskCallbackResource], index:int)->void:
 
 ## Callback when children tasks has been completed
 func _call_children_completed(_result:Result, _task_runner:TaskCallbackResource, sibilings:Array[TaskCallbackResource], index:int)->void:
+	if callback_complete == null:
+		_call_error()
+		return
 	if result_from_child && (_result == Result.CANCEL || _result == Result.ERROR):
 		callback_complete = callback_complete.bind(_result, self)
 		var callback_temp: = callback_complete
@@ -108,11 +103,7 @@ func _call_sibilings_completed(_result:Result, _task_runner:TaskCallbackResource
 ## Called after executing self, first children and next sibiling
 func _call_complete()->void:
 	if callback_complete.is_null():
-		print("TaskCallbackResource: ERROR - ", resource_name )
-		callback_complete = callback_complete.bind(Result.ERROR, self)
-		var callback_temp: = callback_complete
-		callback_complete = Callable()
-		callback_temp.call()
+		_call_error()
 		return
 	
 	print("TaskCallbackResource: SUCCESS - ", resource_name )
@@ -123,14 +114,49 @@ func _call_complete()->void:
 	callback_complete = Callable()
 	callback_temp.call()
 
-static func test_single_tick_loop(count:int = 10, sibiling_count:int = 3, depth:int = 3)->void:
+## Called when returns an error
+func _call_error()->void:
+	printerr("TaskCallbackResource: ERROR - ", resource_name )
+	callback_complete = callback_complete.bind(Result.ERROR, self)
+	var callback_temp: = callback_complete
+	callback_complete = Callable()
+	callback_temp.call()
+
+static func test_single_tick_loop(count:int = 10, sibiling_count:int = 3, depth:int = 10)->void:
 	print("---------------------------")
 	print("TaskCallbackResource: TEST LOOP X", count)
 	
-	var root_array:Array[TaskCallbackResource]
+	var _root:Array[TaskCallbackResource] = [TaskCallbackResource.new(),TaskCallbackResource.new(),TaskCallbackResource.new(),]
+	var _0:Array[TaskCallbackResource] = [TaskCallbackResource.new(),TaskCallbackResource.new(),TaskCallbackResource.new(),]
+	var _1:Array[TaskCallbackResource] = [TaskCallbackResource.new(),TaskCallbackResource.new(),TaskCallbackResource.new(),]
+	var _2:Array[TaskCallbackResource] = [TaskCallbackResource.new(),TaskCallbackResource.new(),TaskCallbackResource.new(),]
+	_root[0].children_tasks = _0
+	_root[1].children_tasks = _1
+	_root[2].children_tasks = _2
+	# generate names
+	for i in 3:
+		_root[i].resource_name = str(i)
+		_root[i].task_started.connect(_root[i].test_success)
+		for j in 3:
+			var inst:TaskCallbackResource = _root[i].children_tasks[j]
+			inst.resource_name = str(i)+"_"+str(j)
+			inst.task_started.connect(inst.test_success)
 	
+	_root[0].test_run(Result.SUCCESS, _root[0], _root, depth)
 
+func test_run(result:Result, task_runner:TaskCallbackResource, tasks:Array[TaskCallbackResource], i:int):
+	if i == 0:
+		return
+	print("___________________________")
+	task_runner.callback_complete = task_runner.test_run.bind(tasks, i-1)
+	task_runner.task_start(tasks, 0)
 
-
-
+func test_success()->void:
+	# TODO: remove these testing calls
+	# tests cancellation in a chain
+	if randf() < 0.03:
+		task_cancel()
+		return
+	#tests cases where whole chain happens in one tick
+	task_next()
 
