@@ -27,6 +27,9 @@ var previous_state:int
 ## Flag to transition logic to cancel transitioning. Used during state_exit 
 var cancel_enter:bool = false
 
+func start(_first_state:int)->void:
+	state = _first_state
+	state_enter.emit()
 
 ## Method to transition between states.
 func transition(_next_state:int)->void:
